@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Naruto.Views.Show_Character">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ImageButton 
+                Source="back_black" 
+                BackgroundColor="Transparent" 
+                WidthRequest="50" Margin="20" 
+                HorizontalOptions="Start"
+                Command="{Binding btnBack}"
+                />
+            <StackLayout>
+                <Frame BackgroundColor="Aqua" Margin="20" CornerRadius="20">
+                    <StackLayout>
+                        <Image  Source="hoja_dark" WidthRequest="200"/>
+                        <Label  HorizontalOptions="Center" Text="Naruto" TextColor="Black" FontSize="40" FontAttributes="Bold"/>
+                        <Label  HorizontalOptions="Center" Text="Uzumaki" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                        <Label  HorizontalOptions="Center" Text="30" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="JUTSU" Grid.Column="1" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="COLORS" Grid.Column="2" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Rasengan" Grid.Column="1" TextColor="White" FontAttributes="Bold"/>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Grid.Column="2"
+                                Margin="10,0,0,0">
+                                <BoxView
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    BackgroundColor="red"
+                                    CornerRadius="15"
+                                    VerticalOptions="Center"/>
+                                <BoxView
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    BackgroundColor="DarkGreen"
+                                    CornerRadius="15"
+                                    VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Grid>
+
+
+                    </StackLayout>
+
+                </Frame>
+
+                <Frame BackgroundColor="silver" Margin="20" CornerRadius="20" >
+                    <StackLayout HorizontalOptions="Center">
+                        <Label  Text="Developer" TextColor="Black"/>
+                        <Label  Text="Jorge Loor" TextColor="Black"/>
+                        <Label  Text=" v1.1.0 2023" TextColor="Black"/>
+                        <ImageButton  Source="web" BackgroundColor="Transparent" WidthRequest="20"/>
+                        <Label  Text="Never Give Up" TextColor="Black"/>
+                    </StackLayout>
+
+                </Frame>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
