@@ -9,6 +9,7 @@ namespace Naruto.ViewsModels
 {
     public class VM_Edit_Character : BaseViewModel
     {
+        DataBase.DB myDB = new DataBase.DB();
         public MNaruto receivedCharacter { get; set; }
 
         #region VARIABLES
@@ -22,7 +23,6 @@ namespace Naruto.ViewsModels
         public string _Textcolor3;
         #endregion
 
-        DataBase.DB myDB = new DataBase.DB();
 
         #region CONSTRUCTOR
         public VM_Edit_Character(INavigation navigation, MNaruto naruto)
@@ -39,6 +39,7 @@ namespace Naruto.ViewsModels
             TextColor3 = receivedCharacter.Color3;
         }
         #endregion
+
 
 
         #region OBJETS
@@ -109,11 +110,11 @@ namespace Naruto.ViewsModels
                 "WHERE Id = " + receivedCharacter.Id;
 
             db.Execute(editCharacter);
-
             await Navigation.PushAsync(new PageHome());
 
         }
-        #endregion 
+        #endregion
+
 
         #region COMMANDS
         public ICommand btnBackHome => new Command(async () => await goBack());

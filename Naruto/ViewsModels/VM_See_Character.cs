@@ -15,17 +15,21 @@ namespace Naruto.ViewsModels
         #endregion
 
 
+        #region CONSTRUCTOR
         public VM_See_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
             receivedCharacter = naruto;
         }
+        #endregion
 
+
+
+        #region METHODS
         public async Task goBack()
         {
             await Navigation.PushAsync(new PageHome());
         }
-
         public async Task DeleteCharacter()
         {
             var db = myDB.openConnection();
@@ -37,10 +41,13 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new Edit_Character(receivedCharacter));
         }
+        #endregion
 
+
+        #region COMMANDS
         public ICommand btnBack => new Command(async () => await goBack());
         public ICommand btnGoUpDateCharacter => new Command<MNaruto>(async (n) => await goUpdateProduct(n));
         public ICommand btnGoDeleteCharacter => new Command(async () => await DeleteCharacter());
-
+        #endregion
     }
 }
