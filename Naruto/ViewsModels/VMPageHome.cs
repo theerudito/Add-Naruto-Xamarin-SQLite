@@ -1,5 +1,6 @@
 ﻿using Naruto.Models;
 using Naruto.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -50,16 +51,16 @@ namespace Naruto.ViewsModels
             await Navigation.PushAsync(new Add_Character());
         }
 
-        public async Task goSeeCharacter()
+        public async Task goSeeCharacter(MNaruto naruto)
         {
-            await Navigation.PushAsync(new Show_Character());
+            await Navigation.PushAsync(new Show_Character(naruto));
         }
         #endregion
 
 
 
         #region COMANDOS
-        public ICommand btnShowCharacter => new Command(async () => await goSeeCharacter());
+        public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goSeeCharacter(n));
         public ICommand btnAddCharacter => new Command(async () => await goAddCharacter());
         #endregion
     }

@@ -15,7 +15,6 @@
                     HorizontalOptions="Start"
                     Margin="10"/>
             </StackLayout>
-
             <Frame Margin="10" CornerRadius="10" >
                 <StackLayout>
                     <Frame
@@ -24,47 +23,75 @@
                         Margin="0,0,0,8"
                         CornerRadius="20">
                         <StackLayout >
-
-                            <Grid Margin="0,0,0,0" Padding="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <StackLayout Grid.Column="0">
-                                    <Label  Text="Name: " Grid.Column="0" FontAttributes="Bold" TextColor="White" />
-                                    <Label  Text="{Binding TextName}" Grid.Column="0" TextColor="black"/>
+                            <Grid
+                                Margin="0,0,0,0"
+                                Padding="0"
+                                RowDefinitions="*,*"
+                                ColumnDefinitions="*,*">
+                                <StackLayout
+                                    Grid.Column="0">
+                                    <Label
+                                        Text="Name: "
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+                                    <Label
+                                        Text="{Binding TextName}"
+                                        Grid.Column="0"
+                                        TextColor="black"/>
                                 </StackLayout >
-
-                                <StackLayout Grid.Column="1">
-                                    <Label  Text="Name: " Grid.Column="0" FontAttributes="Bold" TextColor="White" />
-                                    <Label  Text="{Binding TextClan}" Grid.Column="1" TextColor="black"/>
+                                <StackLayout
+                                    Grid.Column="1">
+                                    <Label
+                                        Text="Name: "
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+                                    <Label
+                                        Text="{Binding TextClan}"
+                                        Grid.Column="1"
+                                        TextColor="black"/>
                                 </StackLayout>
-
-                                <StackLayout Grid.Column="2">
+                                <StackLayout
+                                    Grid.Column="2">
                                     <Image Margin="0,-20,0,0"
                                            Source="{Binding TextImage}"
-                                           WidthRequest="100" HeightRequest="90"/>
+                                           WidthRequest="100"
+                                           HeightRequest="90"/>
                                 </StackLayout>
-
-                                <StackLayout Grid.Column="0" Grid.Row="1" Margin="0,10,0,0">
-                                    <Label  Text="Age: " FontAttributes="Bold" TextColor="White"/>
-                                    <Label  Text="{Binding TextAge}"  TextColor="black"/>
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Age: "
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+                                    <Label
+                                        Text="{Binding TextAge}"
+                                        TextColor="black"/>
                                 </StackLayout>
-
-                                <StackLayout Grid.Column="2" Grid.Row="1" Margin="0,10,0,0">
-                                    <Label  Text="Jutsu: "  FontAttributes="Bold" TextColor="White"/>
-                                    <Label  Text="{Binding TextJutsu}"  TextColor="black"/>
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Jutsu: "
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+                                    <Label
+                                        Text="{Binding TextJutsu}"
+                                        TextColor="black"/>
                                 </StackLayout>
-
-
-                                <StackLayout Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
-                                    <Label  Text="Outfit: " Grid.Column="3" FontAttributes="Bold" TextColor="White"/>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Outfit: "
+                                        Grid.Column="3"
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
                                     <StackLayout
                                         Orientation="Horizontal"
                                         Grid.Column="3"
@@ -82,19 +109,12 @@
                                             CornerRadius="15"
                                             VerticalOptions="Center"/>
                                     </StackLayout>
-
-
                                 </StackLayout>
-
                             </Grid>
-
-
-
                         </StackLayout>
                     </Frame>
-
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Name: "
                             FontSize="18"
@@ -122,8 +142,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Clan: "
                             FontSize="18"
@@ -152,8 +172,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Age: "
                             FontSize="18"
@@ -182,8 +202,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Image: "
                             FontSize="18"
@@ -212,8 +232,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Jutsu: "
                             FontSize="18"
@@ -242,10 +262,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Color 1: "
                             FontSize="18"
@@ -274,9 +292,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Color 2: "
                             FontSize="18"
@@ -305,8 +322,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-                    <Grid RowDefinitions="40, *" >
+                    <Grid
+                        RowDefinitions="40, *" >
                         <Label
                             Text="Color 3: "
                             FontSize="18"
@@ -335,10 +352,8 @@
                                 />
                         </Frame>
                     </Grid>
-
-
-
-                    <StackLayout HorizontalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center">
                         <Button
                             Text="ADD"
                             FontAttributes="Bold"
@@ -351,9 +366,6 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
-
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
