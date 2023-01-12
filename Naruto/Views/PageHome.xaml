@@ -55,7 +55,7 @@
                                             </FlexLayout>
 
                                             <StackLayout Grid.Column="0"  HeightRequest="10" >
-                                                <Image HorizontalOptions="Center" WidthRequest="40"     Source="eye_dark" BackgroundColor="Transparent">
+                                                <Image HorizontalOptions="Center" WidthRequest="40" Source="eye_light" BackgroundColor="Transparent">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={x:Reference List_Character}, Path=BindingContext.btnShowCharacter}"
                                                                               CommandParameter="{Binding .}"/>
@@ -82,15 +82,8 @@
                         </CollectionView.ItemsLayout>
                     </CollectionView>
 
-
-
                 </Grid>
             </Frame>
-
-
-
-
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>
