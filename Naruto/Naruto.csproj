@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Edit_Character.xaml.cs">
+      <DependentUpon>Edit_Character.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PageHome.xaml.cs">
       <DependentUpon>PageHome.xaml</DependentUpon>
     </Compile>

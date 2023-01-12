@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Naruto.Views.Show_Character">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Transparent">
+        <StackLayout
+            BackgroundColor="Transparent">
             <StackLayout.Background >
                 <LinearGradientBrush
                     StartPoint="1,0">
                     <GradientStop
-                        Color="{Binding receivedCharacter.Color1}"
+                        Color="{Binding receivedCharacter.Color2}"
                         Offset="0.1"/>
                     <GradientStop
                         Color="{Binding receivedCharacter.Color3}"
@@ -111,7 +112,7 @@
                                 />
 
                             <ImageButton
-                                Source="delete"
+                                Source="delete_light"
                                 BackgroundColor="Transparent"
                                 Grid.Column="3"
                                 HeightRequest="40"

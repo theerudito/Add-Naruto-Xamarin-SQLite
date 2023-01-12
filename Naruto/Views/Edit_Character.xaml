@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Naruto.Views.Edit_Character">
+    <ContentPage.Content>
+
+        <StackLayout
+            BackgroundColor="AliceBlue">
+            <StackLayout>
+                <ImageButton
+                    Source="back_black"
+                    Command="{Binding btnBackHome} "
+                    BackgroundColor="Transparent"
+                    WidthRequest="50"
+                    HorizontalOptions="Start"
+                    Margin="10"/>
+            </StackLayout>
+            <Frame Margin="10" CornerRadius="10" >
+                <StackLayout>
+                    <Frame
+                        HeightRequest="160"
+                        BackgroundColor="{Binding TextColor1}"
+                        Margin="0,0,0,8"
+                        CornerRadius="20">
+                        <StackLayout >
+                            <Grid
+                                Margin="0,0,0,0"
+                                Padding="0"
+                                RowDefinitions="*,*"
+                                ColumnDefinitions="*,*">
+                                <StackLayout
+                                    Grid.Column="0">
+                                    <Label
+                                        Text="Name: "
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+                                    <Label
+                                        Text="{Binding TextName}"
+                                        Grid.Column="0"
+                                        TextColor="black"/>
+                                </StackLayout >
+                                <StackLayout
+                                    Grid.Column="1">
+                                    <Label
+                                        Text="Name: "
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+                                    <Label
+                                        Text="{Binding TextClan}"
+                                        Grid.Column="1"
+                                        TextColor="black"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2">
+                                    <Image Margin="0,-20,0,0"
+                                           Source="{Binding TextImage}"
+                                           WidthRequest="100"
+                                           HeightRequest="90"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Age: "
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+                                    <Label
+                                        Text="{Binding TextAge}"
+                                        TextColor="black"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Jutsu: "
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+                                    <Label
+                                        Text="{Binding TextJutsu}"
+                                        TextColor="black"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Margin="0,10,0,0">
+                                    <Label
+                                        Text="Outfit: "
+                                        Grid.Column="3"
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Grid.Column="3"
+                                        Margin="0,0,0,0">
+                                        <BoxView
+                                            HeightRequest="20"
+                                            WidthRequest="20"
+                                            BackgroundColor="{Binding TextColor2}"
+                                            CornerRadius="15"
+                                            VerticalOptions="Center"/>
+                                        <BoxView
+                                            HeightRequest="20"
+                                            WidthRequest="20"
+                                            BackgroundColor="{Binding TextColor3}"
+                                            CornerRadius="15"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Name: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Name"
+                                TextColor="Black"
+                                TextTransform="Default"
+                                PlaceholderColor="black"
+                                Keyboard="Text"   Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextName}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Clan: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Clan"
+                                TextColor="Black"
+                                TextTransform="Default"
+                                PlaceholderColor="black"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextClan}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Age: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Age"
+                                TextColor="Black"
+                                TextTransform="Default"
+                                PlaceholderColor="black"
+                                Keyboard="Numeric"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextAge}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Image: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Image"
+                                TextColor="Black"
+                                TextTransform="Default"
+                                PlaceholderColor="black"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextImage}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Jutsu: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="00,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="jutsu"
+                                TextColor="Black"
+                                TextTransform="Default"
+                                PlaceholderColor="black"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextJutsu}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Color 1: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Color 1"
+                                TextColor="{Binding TextColor1}"
+                                TextTransform="Default"
+                                PlaceholderColor="{Binding TextColor1}"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextColor1}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Color 2: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Color 2"
+                                TextColor="{Binding TextColor2}"
+                                TextTransform="Default"
+                                PlaceholderColor="{Binding TextColor2}"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextColor2}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        RowDefinitions="40, *" >
+                        <Label
+                            Text="Color 3: "
+                            FontSize="18"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="80"/>
+                        <Frame
+                            BackgroundColor="#d9d9d9"
+                            Grid.Column="1"
+                            Margin="-100,0,20,0"
+                            CornerRadius="10"
+                            Padding="-10">
+                            <Entry
+                                Placeholder="Color 3"
+                                TextColor="{Binding TextColor3}"
+                                TextTransform="Default"
+                                PlaceholderColor="{Binding TextColor3}"
+                                Keyboard="Text"
+                                Margin="20,1,0,-4"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Text="{Binding TextColor3}"
+                                />
+                        </Frame>
+                    </Grid>
+                    <StackLayout
+                        HorizontalOptions="Center">
+                        <Button
+                            Text="ADD"
+                            FontAttributes="Bold"
+                            TextColor="white"
+                            Background="orangered"
+                            Margin="100,20,100,0"
+                            CornerRadius="50"
+                            Command="{Binding btnEditCharacter}"
+                            />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

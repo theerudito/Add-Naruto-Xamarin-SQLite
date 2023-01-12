@@ -9,9 +9,12 @@ namespace Naruto.ViewsModels
     public class VM_See_Character : BaseViewModel
     {
         DataBase.DB myDB = new DataBase.DB();
+
         #region VARIABLE
         public MNaruto receivedCharacter { get; set; }
         #endregion
+
+
         public VM_See_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
@@ -22,10 +25,7 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new PageHome());
         }
-        //public async Task goShowDetails()
-        //{
-        //    await Navigation.PushAsync(new Show_Character());
-        //}
+
         public async Task DeleteCharacter()
         {
             var db = myDB.openConnection();
@@ -33,14 +33,13 @@ namespace Naruto.ViewsModels
             db.Execute(query);
             await Navigation.PushAsync(new PageHome());
         }
-        public async Task goUpdateProduct()
+        public async Task goUpdateProduct(MNaruto naruto)
         {
-            await Navigation.PushAsync(new Add_Character());
+            await Navigation.PushAsync(new Edit_Character(receivedCharacter));
         }
 
         public ICommand btnBack => new Command(async () => await goBack());
-        //public ICommand btnShowCharacter => new Command(async () => await goShowDetails());
-        public ICommand btnGoUpDateCharacter => new Command(async () => await goUpdateProduct());
+        public ICommand btnGoUpDateCharacter => new Command<MNaruto>(async (n) => await goUpdateProduct(n));
         public ICommand btnGoDeleteCharacter => new Command(async () => await DeleteCharacter());
 
     }
