@@ -1,10 +1,5 @@
-﻿using Naruto.ViewsModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Naruto.Models;
+using Naruto.ViewsModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -18,15 +18,7 @@
                             HeightRequest="100"
                             Margin="20" />
                     </StackLayout>
-                    <StackLayout>
-                        <ImageButton
-                            Source="ADD"
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="End"
-                            WidthRequest="50"
-                            Margin="10"
-                            Command="{Binding btnAddCharacter}"/>
-                    </StackLayout>
+
                     <CollectionView
                         x:Name="List_Character"
                         Margin="0,140,0,0"
@@ -108,6 +100,24 @@
 
                 </Grid>
             </Frame>
+            <Grid RowDefinitions="30">
+                <ImageButton Source="left" BackgroundColor="Transparent" Grid.Column="1"/>
+                <ImageButton Source="right"  BackgroundColor="Transparent" Grid.Column="2"/>
+                <StackLayout Grid.Column="3">
+                    <ImageButton
+                        Source="ADD"
+                        BackgroundColor="Transparent"
+                        WidthRequest="50"
+                        Margin="0,-20,0,0"
+                        Command="{Binding btnAddCharacter}"
+
+                        />
+                </StackLayout>
+
+            </Grid>
+            <StackLayout>
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

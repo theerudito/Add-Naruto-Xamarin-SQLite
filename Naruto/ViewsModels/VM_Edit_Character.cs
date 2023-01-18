@@ -1,21 +1,36 @@
 ﻿using Naruto.Models;
 using Naruto.Views;
-using System.Collections.ObjectModel;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Naruto.ViewsModels
 {
-    public class VM_Edit_Character : BaseViewModel
+    class VM_Edit_Character : BaseViewModel
     {
         DataBase.DB myDB = new DataBase.DB();
-        public MNaruto receivedCharacter { get; set; }
+
+        public VM_Edit_Character(INavigation navigation, MNaruto naruto)
+        {
+            Navigation = navigation;
+            _receivedCharacter = naruto;
+            TextName = _receivedCharacter.Name;
+            TextClan = _receivedCharacter.Clan;
+            TextAge = Convert.ToString(_receivedCharacter.Age);
+            TextImage = _receivedCharacter.Image;
+            TextJutsu = _receivedCharacter.Jutsu;
+            TextColor1 = _receivedCharacter.Color1;
+            TextColor2 = _receivedCharacter.Color2;
+            TextColor3 = _receivedCharacter.Color3;
+        }
+
 
         #region VARIABLES
+        public MNaruto _receivedCharacter { get; set; }
         public string _Textname;
         public string _Textclan;
-        public int _Textage;
+        public string _Textage;
         public string _Textimage;
         public string _Textjutsu;
         public string _Textcolor1;
@@ -24,29 +39,11 @@ namespace Naruto.ViewsModels
         #endregion
 
 
-        #region CONSTRUCTOR
-        public VM_Edit_Character(INavigation navigation, MNaruto naruto)
-        {
-            Navigation = navigation;
-            receivedCharacter = naruto;
-            TextName = receivedCharacter.Name;
-            TextClan = receivedCharacter.Clan;
-            TextAge = receivedCharacter.Age;
-            TextImage = receivedCharacter.Image;
-            TextJutsu = receivedCharacter.Jutsu;
-            TextColor1 = receivedCharacter.Color1;
-            TextColor2 = receivedCharacter.Color2;
-            TextColor3 = receivedCharacter.Color3;
-        }
-        #endregion
-
-
-
         #region OBJETS
         public string TextName
         {
-            get { return _Textclan; }
-            set { SetValue(ref _Textclan, value); }
+            get { return _Textname; }
+            set { SetValue(ref _Textname, value); }
 
         }
         public string TextClan
@@ -54,7 +51,7 @@ namespace Naruto.ViewsModels
             get { return _Textclan; }
             set { SetValue(ref _Textclan, value); }
         }
-        public int TextAge
+        public string TextAge
         {
             get { return _Textage; }
             set { SetValue(ref _Textage, value); }
@@ -87,38 +84,34 @@ namespace Naruto.ViewsModels
         #endregion
 
 
-
         #region METHODS
-        public async Task goBack()
-        {
-            await Navigation.PushAsync(new PageHome());
-        }
-
         public async Task Edit_Caracter()
         {
             var db = myDB.openConnection();
-
             var editCharacter = "UPDATE Naruto SET " +
                 "Name = '" + TextName + "', " +
                 "Clan = '" + TextClan + "', " +
-                "Age = '" + TextAge + "', " +
+                "Age = '" + Convert.ToInt16(TextAge) + "', " +
                 "Image = '" + TextImage + "', " +
                 "Jutsu = '" + TextJutsu + "', " +
                 "Color1 = '" + TextColor1 + "', " +
                 "Color2 = '" + TextColor2 + "', " +
                 "Color3 = '" + TextColor3 + "' " +
-                "WHERE Id = " + receivedCharacter.Id;
-
+                "WHERE Id = " + _receivedCharacter.Id;
             db.Execute(editCharacter);
             await Navigation.PushAsync(new PageHome());
-
+        }
+        public async Task goBack()
+        {
+            await Navigation.PushAsync(new PageHome());
         }
         #endregion
 
 
         #region COMMANDS
-        public ICommand btnBackHome => new Command(async () => await goBack());
         public ICommand btnEditCharacter => new Command(async () => await Edit_Caracter());
+        public ICommand btnBackHome => new Command(async () => await goBack());
         #endregion
+
     }
 }

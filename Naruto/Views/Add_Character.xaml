@@ -355,11 +355,11 @@
                     <StackLayout
                         HorizontalOptions="Center">
                         <Button
-                            Text="ADD"
+                            Text="ADD CHARACTER"
                             FontAttributes="Bold"
                             TextColor="white"
                             Background="orangered"
-                            Margin="100,20,100,0"
+                            Margin="30,20,20,0"
                             CornerRadius="50"
                             Command="{Binding btnAddNewCharacter}"
                             />

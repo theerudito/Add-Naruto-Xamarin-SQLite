@@ -13,9 +13,11 @@ namespace Naruto.ViewsModels
     {
 
         #region VARIABLES
+        public bool _EditingCharacter = true;
         DataBase.DB myDB = new DataBase.DB();
         ObservableCollection<MNaruto> _Lista_character;
         #endregion
+
 
         #region CONSTRUCTOR
         public VMPageHome(INavigation navigation)
@@ -24,6 +26,7 @@ namespace Naruto.ViewsModels
             GET_ALL_CHARACTERS();
         }
         #endregion
+
 
         #region OBJETOS
         public ObservableCollection<MNaruto> Lista_Characters
@@ -36,6 +39,7 @@ namespace Naruto.ViewsModels
             }
         }
         #endregion
+
 
         #region METODOS ASYNC
         public async Task GET_ALL_CHARACTERS()
@@ -51,17 +55,16 @@ namespace Naruto.ViewsModels
             await Navigation.PushAsync(new Add_Character());
         }
 
-        public async Task goSeeCharacter(MNaruto naruto)
+        public async Task goShowCharacter(MNaruto naruto)
         {
             await Navigation.PushAsync(new Show_Character(naruto));
         }
         #endregion
 
 
-
         #region COMANDOS
-        public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goSeeCharacter(n));
         public ICommand btnAddCharacter => new Command(async () => await goAddCharacter());
+        public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goShowCharacter(n));
         #endregion
     }
 }

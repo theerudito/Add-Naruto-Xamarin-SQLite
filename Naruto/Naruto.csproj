@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Edit_Character.xaml.cs">
-      <DependentUpon>Edit_Character.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\PageHome.xaml.cs">
       <DependentUpon>PageHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Edit_Character.xaml.cs">
+      <DependentUpon>Edit_Character.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -33,6 +33,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Show_Character.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Edit_Character.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,6 +1,5 @@
 ﻿using Naruto.Models;
 using Naruto.Views;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -18,6 +17,7 @@ namespace Naruto.ViewsModels
         //Color2 
 
         #region VARIABLES
+        public MNaruto receivedCharacter { get; set; }
         public string _Textname;
         public string _Textclan;
         public int _Textage;
@@ -79,7 +79,6 @@ namespace Naruto.ViewsModels
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
-
         #endregion
 
 
@@ -89,8 +88,7 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new PageHome());
         }
-
-        public async Task Add_Caracter()
+        public async Task AddCaracter()
         {
             var db = myDB.openConnection();
 
@@ -102,13 +100,22 @@ namespace Naruto.ViewsModels
             await Navigation.PushAsync(new PageHome());
 
         }
+        public async Task goAddCharacter()
+        {
+            await Navigation.PushAsync(new Add_Character());
+        }
+        public async Task goShowCharacter(MNaruto naruto)
+        {
+            await Navigation.PushAsync(new Show_Character(naruto));
+        }
         #endregion COMMANDS
-
 
 
         #region
         public ICommand btnBackHome => new Command(async () => await goBack());
-        public ICommand btnAddNewCharacter => new Command(async () => await Add_Caracter());
+        public ICommand btnGoUpDateCharacter => new Command(async () => await goAddCharacter());
+        public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goShowCharacter(n));
+        public ICommand btnAddNewCharacter => new Command(async () => await AddCaracter());
         #endregion
     }
 }

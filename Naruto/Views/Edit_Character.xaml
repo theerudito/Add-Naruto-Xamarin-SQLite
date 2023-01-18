@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Naruto.Views.Edit_Character">
     <ContentPage.Content>
-
         <StackLayout
             BackgroundColor="AliceBlue">
             <StackLayout>
@@ -15,10 +14,10 @@
                     HorizontalOptions="Start"
                     Margin="10"/>
             </StackLayout>
-            <Frame Margin="10" CornerRadius="10" >
+            <Frame Margin="5" CornerRadius="10" >
                 <StackLayout>
                     <Frame
-                        HeightRequest="160"
+                        HeightRequest="130"
                         BackgroundColor="{Binding TextColor1}"
                         Margin="0,0,0,8"
                         CornerRadius="20">
@@ -56,8 +55,8 @@
                                     Grid.Column="2">
                                     <Image Margin="0,-20,0,0"
                                            Source="{Binding TextImage}"
-                                           WidthRequest="100"
-                                           HeightRequest="90"/>
+                                           WidthRequest="90"
+                                           HeightRequest="80"/>
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column="0"
@@ -355,11 +354,11 @@
                     <StackLayout
                         HorizontalOptions="Center">
                         <Button
-                            Text="ADD"
+                            Text="EDIT CHARACTER"
                             FontAttributes="Bold"
                             TextColor="white"
                             Background="orangered"
-                            Margin="100,20,100,0"
+                            Margin="30,0,20,0"
                             CornerRadius="50"
                             Command="{Binding btnEditCharacter}"
                             />

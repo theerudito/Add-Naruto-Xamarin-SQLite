@@ -24,7 +24,6 @@ namespace Naruto.ViewsModels
         #endregion
 
 
-
         #region METHODS
         public async Task goBack()
         {
@@ -37,7 +36,7 @@ namespace Naruto.ViewsModels
             db.Execute(query);
             await Navigation.PushAsync(new PageHome());
         }
-        public async Task goUpdateProduct(MNaruto naruto)
+        public async Task goUpdateProduct()
         {
             await Navigation.PushAsync(new Edit_Character(receivedCharacter));
         }
@@ -46,7 +45,7 @@ namespace Naruto.ViewsModels
 
         #region COMMANDS
         public ICommand btnBack => new Command(async () => await goBack());
-        public ICommand btnGoUpDateCharacter => new Command<MNaruto>(async (n) => await goUpdateProduct(n));
+        public ICommand btnGoUpDateCharacter => new Command(async () => await goUpdateProduct());
         public ICommand btnGoDeleteCharacter => new Command(async () => await DeleteCharacter());
         #endregion
     }
