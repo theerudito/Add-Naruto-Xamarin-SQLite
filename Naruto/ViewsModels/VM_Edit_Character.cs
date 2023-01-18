@@ -3,6 +3,7 @@ using Naruto.Views;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Naruto.ViewsModels
@@ -27,6 +28,8 @@ namespace Naruto.ViewsModels
 
 
         #region VARIABLES
+        private string GitHub = "https://github.com/theerudito";
+        private string Web = "https://byerudito.web.app/";
         public MNaruto _receivedCharacter { get; set; }
         public string _Textname;
         public string _Textclan;
@@ -105,12 +108,23 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new PageHome());
         }
+        public async Task openWeb()
+        {
+            await Launcher.OpenAsync(Web);
+        }
+        public async Task openGitHub()
+        {
+            DisplayAlert("infor", "git", "ok");
+            //await Launcher.OpenAsync(GitHub);
+        }
         #endregion
 
 
         #region COMMANDS
         public ICommand btnEditCharacter => new Command(async () => await Edit_Caracter());
         public ICommand btnBackHome => new Command(async () => await goBack());
+        public ICommand btnOpenWeb => new Command(async () => await openWeb());
+        public ICommand btnOpenGithub => new Command(async () => await openGitHub());
         #endregion
 
     }

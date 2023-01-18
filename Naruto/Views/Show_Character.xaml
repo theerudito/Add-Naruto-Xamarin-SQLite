@@ -116,7 +116,6 @@
                                 BackgroundColor="Transparent"
                                 Grid.Column="3"
                                 HeightRequest="40"
-
                                 HorizontalOptions="Start"
                                 Command="{Binding btnGoDeleteCharacter}"
                                 />
@@ -129,8 +128,9 @@
                     CornerRadius="20" >
                     <Grid
                         RowDefinitions="*"
-                        ColumnDefinitions="100,100,100"
-                        Margin="0" Padding="-10"
+                        ColumnDefinitions="100,100,15,15"
+                        Margin="0"
+                        Padding="-10"
                         HorizontalOptions="Center">
                         <Label
                             Text="Developer: Jorge Loor"
@@ -144,10 +144,17 @@
                             Grid.Row="0"/>
                         <ImageButton
                             Source="web"
+                            Command="{Binding btnOpenWeb}"
                             BackgroundColor="Transparent"
-                            WidthRequest="20"
+
                             Grid.Column="2"
                             Grid.Row="0" />
+                        <ImageButton
+                            Source="github"
+                            Command="{Binding btnOpenGithub}"
+                            BackgroundColor="Transparent"
+                            Grid.Column="3"
+                            Grid.Row="0"/>
                     </Grid>
                 </Frame>
             </StackLayout>
