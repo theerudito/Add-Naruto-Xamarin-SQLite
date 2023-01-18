@@ -32,7 +32,7 @@
                                 Text="{Binding SearchText}"
                                 SearchCommand="{Binding SearchCharacter}"
                                 SearchCommandParameter="{Binding .}"
-                                CancelButtonColor="Orange"                           
+                                CancelButtonColor="Orange"
                                 />
                         </Frame>
                     </StackLayout>
@@ -136,7 +136,7 @@
                         Source="ADD"
                         BackgroundColor="Transparent"
                         WidthRequest="50"
-                        Margin="0,-25,0,0"
+                        Margin="0,-20,0,0"
                         Command="{Binding btnAddCharacter}"
                         />
                 </StackLayout>
