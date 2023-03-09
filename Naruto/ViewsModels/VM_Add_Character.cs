@@ -8,13 +8,6 @@ namespace Naruto.ViewsModels
 {
     public class VM_Add_Character : BaseViewModel
     {
-        //Name 
-        //Clan 
-        //Age
-        //Jutsu
-        //Image 
-        //Color1 
-        //Color2 
 
         #region VARIABLES
         public MNaruto receivedCharacter { get; set; }
@@ -26,6 +19,7 @@ namespace Naruto.ViewsModels
         public string _Textcolor1;
         public string _Textcolor2;
         public string _Textcolor3;
+
         #endregion
 
         DataBase.DB myDB = new DataBase.DB();
@@ -79,8 +73,55 @@ namespace Naruto.ViewsModels
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
-        #endregion
 
+        public string Color1
+        {
+            get { return _Textcolor1; }
+            set { SetValue(ref _Textcolor1, value); }
+        }
+        public string SelectColor1
+        {
+            get { return _Textcolor1; }
+            set
+            {
+                SetProperty(ref _Textcolor1, value);
+                Color1 = _Textcolor1;
+
+            }
+        }
+
+        public string Color2
+        {
+            get { return _Textcolor2; }
+            set { SetValue(ref _Textcolor2, value); }
+        }
+        public string SelectColor2
+        {
+            get { return _Textcolor2; }
+            set
+            {
+                SetProperty(ref _Textcolor2, value);
+                Color2 = _Textcolor2;
+
+            }
+        }
+
+        public string Color3
+        {
+            get { return _Textcolor3; }
+            set { SetValue(ref _Textcolor3, value); }
+        }
+        public string SelectColor3
+        {
+            get { return _Textcolor3; }
+            set
+            {
+                SetProperty(ref _Textcolor3, value);
+                Color3 = _Textcolor3;
+
+            }
+        }
+        #endregion
 
 
         #region METHODS

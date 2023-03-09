@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Naruto.ViewsModels"
              x:Class="Naruto.Views.Add_Character">
     <ContentPage.Content>
 
@@ -279,17 +280,38 @@
                             Margin="-100,0,20,0"
                             CornerRadius="10"
                             Padding="-10">
-                            <Entry
-                                Placeholder="Color 1"
-                                TextColor="{Binding TextColor1}"
-                                TextTransform="Default"
-                                PlaceholderColor="{Binding TextColor1}"
-                                Keyboard="Text"
-                                Margin="20,1,0,-4"
-                                HeightRequest="80"
-                                VerticalOptions="Center"
-                                Text="{Binding TextColor1}"
-                                />
+                            <Picker
+                                Margin="20,0,0,0"
+                                Title="Select Color One"
+                                SelectedItem="{Binding SelectColor1}"
+                                ItemsSource="{Binding Color}">
+                                <Picker.Items>
+                                    <x:String>Red</x:String>
+                                    <x:String>Blue</x:String>
+                                    <x:String>Orange</x:String>
+                                    <x:String>Violet</x:String>
+                                    <x:String>Black</x:String>
+                                    <x:String>Purple</x:String>
+                                    <x:String>Yellow</x:String>
+                                    <x:String>Pink</x:String>
+                                    <x:String>Aqua</x:String>
+                                    <x:String>Silver</x:String>
+                                    <x:String>Brown</x:String>
+                                    <x:String>Green</x:String>
+                                    <x:String>Gray</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <!--<Entry
+                            Placeholder="Color 1"
+                            TextColor="{Binding TextColor1}"
+                            TextTransform="Default"
+                            PlaceholderColor="{Binding TextColor1}"
+                            Keyboard="Text"
+                            Margin="20,1,0,-4"
+                            HeightRequest="80"
+                            VerticalOptions="Center"
+                            Text="{Binding TextColor1}"
+                            />-->
                         </Frame>
                     </Grid>
                     <Grid
@@ -309,17 +331,27 @@
                             Margin="-100,0,20,0"
                             CornerRadius="10"
                             Padding="-10">
-                            <Entry
-                                Placeholder="Color 2"
-                                TextColor="{Binding TextColor2}"
-                                TextTransform="Default"
-                                PlaceholderColor="{Binding TextColor2}"
-                                Keyboard="Text"
-                                Margin="20,1,0,-4"
-                                HeightRequest="80"
-                                VerticalOptions="Center"
-                                Text="{Binding TextColor2}"
-                                />
+                            <Picker
+                                Margin="20,0,0,0"
+                                Title="Select Color Two"
+                                SelectedItem="{Binding SelectColor2}"
+                                ItemsSource="{Binding Color}">
+                                <Picker.Items>
+                                    <x:String>Red</x:String>
+                                    <x:String>Blue</x:String>
+                                    <x:String>Orange</x:String>
+                                    <x:String>Violet</x:String>
+                                    <x:String>Black</x:String>
+                                    <x:String>Purple</x:String>
+                                    <x:String>Yellow</x:String>
+                                    <x:String>Pink</x:String>
+                                    <x:String>Aqua</x:String>
+                                    <x:String>Silver</x:String>
+                                    <x:String>Brown</x:String>
+                                    <x:String>Green</x:String>
+                                    <x:String>Gray</x:String>
+                                </Picker.Items>
+                            </Picker>
                         </Frame>
                     </Grid>
                     <Grid
@@ -333,23 +365,36 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
                             WidthRequest="80"/>
+
+
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
                             Margin="-100,0,20,0"
                             CornerRadius="10"
                             Padding="-10">
-                            <Entry
-                                Placeholder="Color 3"
-                                TextColor="{Binding TextColor3}"
-                                TextTransform="Default"
-                                PlaceholderColor="{Binding TextColor3}"
-                                Keyboard="Text"
-                                Margin="20,1,0,-4"
-                                HeightRequest="80"
-                                VerticalOptions="Center"
-                                Text="{Binding TextColor3}"
-                                />
+
+                            <Picker
+                                Margin="20,0,0,0"
+                                Title="Select Color Three"
+                                SelectedItem="{Binding SelectColor3}"
+                                ItemsSource="{Binding Color}">
+                                <Picker.Items>
+                                    <x:String>Red</x:String>
+                                    <x:String>Blue</x:String>
+                                    <x:String>Orange</x:String>
+                                    <x:String>Violet</x:String>
+                                    <x:String>Black</x:String>
+                                    <x:String>Purple</x:String>
+                                    <x:String>Yellow</x:String>
+                                    <x:String>Pink</x:String>
+                                    <x:String>Aqua</x:String>
+                                    <x:String>Silver</x:String>
+                                    <x:String>Brown</x:String>
+                                    <x:String>Green</x:String>
+                                    <x:String>Gray</x:String>
+                                </Picker.Items>
+                            </Picker>
                         </Frame>
                     </Grid>
                     <StackLayout

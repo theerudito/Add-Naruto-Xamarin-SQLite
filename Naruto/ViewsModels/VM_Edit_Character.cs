@@ -84,6 +84,54 @@ namespace Naruto.ViewsModels
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
+
+        public string Color1
+        {
+            get { return _Textcolor1; }
+            set { SetValue(ref _Textcolor1, value); }
+        }
+        public string SelectColor1
+        {
+            get { return _Textcolor1; }
+            set
+            {
+                SetProperty(ref _Textcolor1, value);
+                Color1 = _Textcolor1;
+
+            }
+        }
+
+        public string Color2
+        {
+            get { return _Textcolor2; }
+            set { SetValue(ref _Textcolor2, value); }
+        }
+        public string SelectColor2
+        {
+            get { return _Textcolor2; }
+            set
+            {
+                SetProperty(ref _Textcolor2, value);
+                Color2 = _Textcolor2;
+
+            }
+        }
+
+        public string Color3
+        {
+            get { return _Textcolor3; }
+            set { SetValue(ref _Textcolor3, value); }
+        }
+        public string SelectColor3
+        {
+            get { return _Textcolor3; }
+            set
+            {
+                SetProperty(ref _Textcolor3, value);
+                Color3 = _Textcolor3;
+
+            }
+        }
         #endregion
 
 
@@ -114,8 +162,7 @@ namespace Naruto.ViewsModels
         }
         public async Task openGitHub()
         {
-            DisplayAlert("infor", "git", "ok");
-            //await Launcher.OpenAsync(GitHub);
+            await Launcher.OpenAsync(GitHub);
         }
         #endregion
 
