@@ -41,7 +41,7 @@
                                 Text="{Binding SearchText}"
                                 SearchCommand="{Binding SearchCharacter}"
                                 SearchCommandParameter="{Binding .}"
-                                CancelButtonColor="Orange"
+                                CancelButtonColor="Red"
                                 />
                             </Frame>
                         </StackLayout>
@@ -51,6 +51,7 @@
                             Grid.Row="2"
                             x:Name="List_Character"
                             Margin="0,20,0,0"
+                            HorizontalScrollBarVisibility="Always"
                             ItemsSource="{Binding Lista_Characters}"
                             SelectionMode="Single" >
                             <CollectionView.ItemTemplate>

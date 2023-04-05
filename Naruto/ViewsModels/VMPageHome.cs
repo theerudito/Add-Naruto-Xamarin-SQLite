@@ -3,6 +3,7 @@ using Naruto.Context;
 using Naruto.Models;
 using Naruto.Views;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,7 +17,9 @@ namespace Naruto.ViewsModels
 
         #region VARIABLES
         string _searchText;
-        DataBase.DB myDB = new DataBase.DB();
+
+        SearchBar SearchTex = new SearchBar();
+
         ObservableCollection<MNaruto> _Lista_character;
         #endregion
 
@@ -25,7 +28,16 @@ namespace Naruto.ViewsModels
         public VMPageHome(INavigation navigation)
         {
             Navigation = navigation;
+          
             GET_ALL_CHARACTERS();
+
+            if (SearchText != "")
+            {
+                GET_ALL_CHARACTERS();
+            } else
+            {
+                GET_ALL_CHARACTERS();
+            }
         }
         #endregion
 
@@ -63,23 +75,27 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new Add_Character());
         }
+
         public async Task getOneCharacter()
         {
-            var db = myDB.openConnection();
-            var query = "SELECT * FROM Naruto WHERE Name LIKE '%" + SearchText + "%'";
-
-            var result = db.Query<MNaruto>(query);
-
-            if (result.Count > 0)
+            if (SearchText == null)
             {
-                Lista_Characters = new ObservableCollection<MNaruto>(result);
-            }
-            else
-            {
-                await DisplayAlert("Alerta", "No se encontraron resultados", "OK");
+              await  GET_ALL_CHARACTERS();
             }
 
+            var searchingOneCharacter = await _dbCcontext.Naruto.Where(n => n.Name == SearchText).FirstOrDefaultAsync();
+
+            if (searchingOneCharacter == null)
+            {
+                await DisplayAlert("info", "No se encontraron resultados", "OK");
+                
+            } else
+            {   
+                Lista_Characters.Clear();
+                Lista_Characters.Add(searchingOneCharacter);  
+            }
         }
+
         public async Task goShowCharacter(MNaruto naruto)
         {
             await Navigation.PushAsync(new Show_Character(naruto));

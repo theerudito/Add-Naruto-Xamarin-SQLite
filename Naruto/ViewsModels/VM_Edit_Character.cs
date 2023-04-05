@@ -24,8 +24,7 @@ namespace Naruto.ViewsModels
 
 
         #region VARIABLES
-        private string GitHub = "https://github.com/theerudito";
-        private string Web = "https://byerudito.web.app/";
+        
 
         public MNaruto _receivedCharacter { get; set; }
         public string _Textname;
@@ -165,23 +164,13 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new PageHome());
         }
-        public async Task openWeb()
-        {
-            await DisplayAlert("o", "hola", "ok");
-            await Launcher.OpenAsync(Web);
-        }
-        public async Task openGitHub()
-        {
-            await Launcher.OpenAsync(GitHub);
-        }
         #endregion
 
 
         #region COMMANDS
         public ICommand btnEditCharacter => new Command(async () => await Edit_Caracter());
         public ICommand btnBackHome => new Command(async () => await goBack());
-        public ICommand btnOpenWeb => new Command(async () => await openWeb());
-        public ICommand btnOpenGithub => new Command(async () => await openGitHub());
+        
         #endregion
 
     }

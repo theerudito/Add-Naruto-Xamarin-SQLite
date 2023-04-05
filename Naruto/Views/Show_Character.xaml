@@ -128,7 +128,7 @@
                     CornerRadius="20" >
                     <Grid
                         RowDefinitions="*"
-                        ColumnDefinitions="100,100,15,15"
+                        ColumnDefinitions="100,100,15,20,15"
                         Margin="0"
                         Padding="-10"
                         HorizontalOptions="Center">
@@ -143,17 +143,16 @@
                             Grid.Column="1"
                             Grid.Row="0"/>
                         <ImageButton
-                            Source="web"
+                            Source="web.png"
                             Command="{Binding btnOpenWeb}"
                             BackgroundColor="Transparent"
-
                             Grid.Column="2"
                             Grid.Row="0" />
                         <ImageButton
-                            Source="github"
+                            Source="github.png"
                             Command="{Binding btnOpenGithub}"
                             BackgroundColor="Transparent"
-                            Grid.Column="3"
+                            Grid.Column="4"
                             Grid.Row="0"/>
                     </Grid>
                 </Frame>
