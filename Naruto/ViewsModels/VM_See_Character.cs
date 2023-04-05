@@ -1,4 +1,6 @@
-﻿using Naruto.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Naruto.Context;
+using Naruto.Models;
 using Naruto.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -8,7 +10,7 @@ namespace Naruto.ViewsModels
 {
     public class VM_See_Character : BaseViewModel
     {
-        DataBase.DB myDB = new DataBase.DB();
+        Application_Context _dbContext = new Application_Context();
 
         #region VARIABLE
         public MNaruto receivedCharacter { get; set; }
@@ -31,9 +33,14 @@ namespace Naruto.ViewsModels
         }
         public async Task DeleteCharacter()
         {
-            var db = myDB.openConnection();
-            var query = "DELETE FROM Naruto WHERE Id = " + receivedCharacter.Id;
-            db.Execute(query);
+            var deleteCharacter = await _dbContext.Naruto.FirstOrDefaultAsync(cha => cha.Id == receivedCharacter.Id);
+
+            if (deleteCharacter != null)
+            {
+                _dbContext.Naruto.Remove(deleteCharacter);
+               await _dbContext.SaveChangesAsync();
+
+            }
             await Navigation.PushAsync(new PageHome());
         }
         public async Task goUpdateProduct()

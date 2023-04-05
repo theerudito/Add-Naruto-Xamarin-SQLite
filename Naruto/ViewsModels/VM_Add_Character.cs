@@ -1,4 +1,5 @@
-﻿using Naruto.Models;
+﻿using Naruto.Context;
+using Naruto.Models;
 using Naruto.Views;
 using System;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Naruto.ViewsModels
 
         #endregion
 
-        DataBase.DB myDB = new DataBase.DB();
+        Application_Context _dbContext = new Application_Context();
 
         #region CONSTRUCTOR
         public VM_Add_Character(INavigation navigation)
@@ -131,14 +132,22 @@ namespace Naruto.ViewsModels
         {
 
             Image myImage = new Image { Source = ImageSource.FromResource("Naruto.Images.naruto.png")};
+
+            var addNewCharacter = new MNaruto
+            {
+                Name = TextName,
+                Clan = TextClan,
+                Age = TextAge,
+                Image = TextImage,
+                Jutsu = TextJutsu,
+                Color1 = Color1,
+                Color2 = Color2,
+                Color3 = Color3,
+            };
+
+            _dbContext.Add(addNewCharacter);
+            await _dbContext.SaveChangesAsync();
       
-
-            var db = myDB.openConnection();
-
-            var insertCharacter = "INSERT INTO Naruto (Name, Clan, Age, Jutsu, Image, Color1, Color2, Color3) " +
-                "VALUES ('" + TextName + "', '" + TextClan + "', '" + TextAge + "', '" + TextImage + "', '" + myImage + "', '" + TextColor1 + "', '" + TextColor2 + "', '" + TextColor3 + "')";
-
-            db.Execute(insertCharacter);
 
             await Navigation.PushAsync(new PageHome());
 

@@ -1,4 +1,6 @@
-﻿using Naruto.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Naruto.Context;
+using Naruto.Models;
 using Naruto.Views;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -10,6 +12,7 @@ namespace Naruto.ViewsModels
 {
     public class VMPageHome : BaseViewModel
     {
+        Application_Context _dbCcontext = new Application_Context();
 
         #region VARIABLES
         string _searchText;
@@ -52,9 +55,8 @@ namespace Naruto.ViewsModels
         #region METODOS ASYNC
         public async Task GET_ALL_CHARACTERS()
         {
-            var db = myDB.openConnection();
-            var query = "SELECT * FROM Naruto";
-            var result = db.Query<MNaruto>(query);
+            var result = await _dbCcontext.Naruto.ToListAsync();
+
             Lista_Characters = new ObservableCollection<MNaruto>(result);
         }
         public async Task goAddCharacter()

@@ -1,6 +1,9 @@
-﻿using Naruto.Models;
+﻿using Naruto.Context;
+using Microsoft.EntityFrameworkCore;
+using Naruto.Models;
 using Naruto.Views;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -10,26 +13,20 @@ namespace Naruto.ViewsModels
 {
     class VM_Edit_Character : BaseViewModel
     {
-        DataBase.DB myDB = new DataBase.DB();
+        Application_Context _dbContext = new Application_Context();
 
         public VM_Edit_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
             _receivedCharacter = naruto;
-            TextName = _receivedCharacter.Name;
-            TextClan = _receivedCharacter.Clan;
-            TextAge = Convert.ToString(_receivedCharacter.Age);
-            TextImage = _receivedCharacter.Image;
-            TextJutsu = _receivedCharacter.Jutsu;
-            TextColor1 = _receivedCharacter.Color1;
-            TextColor2 = _receivedCharacter.Color2;
-            TextColor3 = _receivedCharacter.Color3;
+            getData();
         }
 
 
         #region VARIABLES
         private string GitHub = "https://github.com/theerudito";
         private string Web = "https://byerudito.web.app/";
+
         public MNaruto _receivedCharacter { get; set; }
         public string _Textname;
         public string _Textclan;
@@ -136,21 +133,33 @@ namespace Naruto.ViewsModels
 
 
         #region METHODS
+        public void  getData()
+        {
+            TextName = _receivedCharacter.Name;
+            TextClan = _receivedCharacter.Clan;
+            TextAge = Convert.ToString(_receivedCharacter.Age);
+            TextImage = _receivedCharacter.Image;
+            TextJutsu = _receivedCharacter.Jutsu;
+            TextColor1 = _receivedCharacter.Color1;
+            TextColor2 = _receivedCharacter.Color2;
+            TextColor3 = _receivedCharacter.Color3;
+        }
+
         public async Task Edit_Caracter()
         {
-            var db = myDB.openConnection();
-            var editCharacter = "UPDATE Naruto SET " +
-                "Name = '" + TextName + "', " +
-                "Clan = '" + TextClan + "', " +
-                "Age = '" + Convert.ToInt16(TextAge) + "', " +
-                "Image = '" + TextImage + "', " +
-                "Jutsu = '" + TextJutsu + "', " +
-                "Color1 = '" + TextColor1 + "', " +
-                "Color2 = '" + TextColor2 + "', " +
-                "Color3 = '" + TextColor3 + "' " +
-                "WHERE Id = " + _receivedCharacter.Id;
-            db.Execute(editCharacter);
-            await Navigation.PushAsync(new PageHome());
+            _receivedCharacter.Name = TextName;
+            _receivedCharacter.Clan = TextClan;
+            _receivedCharacter.Age = Convert.ToInt32(TextAge);
+            _receivedCharacter.Image = TextImage;
+            _receivedCharacter.Jutsu = TextJutsu;
+            _receivedCharacter.Color1 = TextColor1;
+            _receivedCharacter.Color2 = TextColor2;
+            _receivedCharacter.Color3 = TextColor3;
+
+           _dbContext.Update(_receivedCharacter);
+           await _dbContext.SaveChangesAsync();
+
+           await Navigation.PushAsync(new PageHome());
         }
         public async Task goBack()
         {
@@ -158,6 +167,7 @@ namespace Naruto.ViewsModels
         }
         public async Task openWeb()
         {
+            await DisplayAlert("o", "hola", "ok");
             await Launcher.OpenAsync(Web);
         }
         public async Task openGitHub()
