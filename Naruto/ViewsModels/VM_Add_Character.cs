@@ -24,7 +24,7 @@ namespace Naruto.ViewsModels
 
         DataBase.DB myDB = new DataBase.DB();
 
-        #region
+        #region CONSTRUCTOR
         public VM_Add_Character(INavigation navigation)
         {
             Navigation = navigation;
@@ -73,7 +73,6 @@ namespace Naruto.ViewsModels
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
-
         public string Color1
         {
             get { return _Textcolor1; }
@@ -89,7 +88,6 @@ namespace Naruto.ViewsModels
 
             }
         }
-
         public string Color2
         {
             get { return _Textcolor2; }
@@ -105,7 +103,6 @@ namespace Naruto.ViewsModels
 
             }
         }
-
         public string Color3
         {
             get { return _Textcolor3; }

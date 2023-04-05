@@ -8,7 +8,7 @@
             <StackLayout>
                 <ImageButton
                     Source="back_black"
-                    Command="{Binding btnBackHome} "
+                    Command="{Binding btnBackHome}"
                     BackgroundColor="Transparent"
                     WidthRequest="50"
                     HorizontalOptions="Start"
