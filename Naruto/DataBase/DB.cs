@@ -5,12 +5,12 @@ namespace Naruto.DataBase
 {
     public class DB
     {
-        public SQLite.SQLiteConnection myconnection;
+        //public SQLite.SQLiteConnection myconnection;
 
 
         public DB()
         {
-            myconnection = new SQLite.SQLiteConnection(GetLocalFilePath("naturo.db3"));
+            //myconnection = new SQLite.SQLiteConnection(GetLocalFilePath("naturo.db3"));
         }
 
         private string GetLocalFilePath(string dbFileName)
@@ -20,9 +20,9 @@ namespace Naruto.DataBase
             return dbPath;
         }
 
-        public SQLite.SQLiteConnection openConnection()
-        {
-            return myconnection;
-        }
+        //public SQLite.SQLiteConnection openConnection()
+        //{
+        //    return myconnection;
+        //}
     }
 }
