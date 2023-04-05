@@ -5,142 +5,164 @@
     <ContentPage.Content >
         <StackLayout
             BackgroundColor="AliceBlue">
+
             <Frame
                 BackgroundColor="white"
                 Margin="10"
                 CornerRadius="10"
                 HasShadow="False">
-                <Grid>
-                    <StackLayout>
+                <Grid
+                    ColumnDefinitions="*"
+                    RowDefinitions="80,40,*,40,20">
+
+                    <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="0">
                         <Image
                             Source="hoja_dark"
                             Grid.Column="0"
                             HeightRequest="80"
                             Margin="-5"
                             />
-                        <Frame
+                    </StackLayout>
+
+                    <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="1">
+                            <Frame
                             Margin="0,15,0,0"
                             BackgroundColor="AliceBlue"
                             Padding="0,0,10,-5"
-                            CornerRadius="5"
-                            HeightRequest="40"
-                            Grid.Column="0"
-                            Grid.Row="0">
-                            <SearchBar
+                            CornerRadius="5">
+                                <SearchBar
+                                Keyboard="Text"
                                 Placeholder="Search Character"
-                                MaxLength="20"
+                                MaxLength="50"
                                 Text="{Binding SearchText}"
                                 SearchCommand="{Binding SearchCharacter}"
                                 SearchCommandParameter="{Binding .}"
                                 CancelButtonColor="Orange"
                                 />
-                        </Frame>
-                    </StackLayout>
-
-
+                            </Frame>
+                        </StackLayout>
 
                     <CollectionView
-                        x:Name="List_Character"
-                        Margin="0,140,0,0"
-                        ItemsSource="{Binding Lista_Characters}"
-                        SelectionMode="Single" >
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate >
-                                <Grid
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            x:Name="List_Character"
+                            Margin="0,20,0,0"
+                            ItemsSource="{Binding Lista_Characters}"
+                            SelectionMode="Single" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate >
+                                    <Grid
                                     RowDefinitions="*"
                                     ColumnDefinitions="*">
-                                    <Frame
+                                        <Frame
                                         Padding="20"
                                         BackgroundColor="{Binding Color1}"
                                         Margin="5"
                                         CornerRadius="10">
-                                        <StackLayout>
-                                            <Image
+                                            <StackLayout>
+                                                <Image
                                                 Source="{Binding Image}"
                                                 HeightRequest="100"/>
 
-                                            <FlexLayout>
-                                                <Label
+                                                <FlexLayout>
+                                                    <Label
                                                     Text="Name: "
                                                     TextColor="white"/>
-                                                <Label
+                                                    <Label
                                                     Text="{Binding Name}"
                                                     Margin="0, 0, 5 ,0"
                                                     TextColor="white"/>
-                                            </FlexLayout>
-                                            <FlexLayout>
-                                                <Label
+                                                </FlexLayout>
+                                                <FlexLayout>
+                                                    <Label
                                                     Text="Clan: "
                                                     TextColor="white"/>
-                                                <Label
+                                                    <Label
                                                     Text="{Binding Clan}"
                                                     Margin="0, 0, 5 ,0"
                                                     TextColor="white"/>
-                                            </FlexLayout>
-                                            <FlexLayout>
-                                                <Label
+                                                </FlexLayout>
+                                                <FlexLayout>
+                                                    <Label
                                                     Text="Age: "
                                                     TextColor="white"/>
-                                                <Label
+                                                    <Label
                                                     Text="{Binding Age}"
                                                     Margin="0, 0, 5 ,0"
                                                     TextColor="white"/>
-                                            </FlexLayout>
-                                            <StackLayout
+                                                </FlexLayout>
+                                                <StackLayout
                                                 Grid.Column="0"
                                                 HeightRequest="10" >
-                                                <Image
+                                                    <Image
                                                     HorizontalOptions="Center"
                                                     WidthRequest="40"
                                                     Source="eye_light"
                                                     BackgroundColor="Transparent">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer
-                                                            Command="{Binding Source={x:Reference List_Character}, Path=BindingContext.btnShowCharacter}"
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                            Command="{Binding Source={x:Reference List_Character}, 
+                                                                Path=BindingContext.btnShowCharacter}"
                                                             CommandParameter="{Binding .}"/>
-                                                    </Image.GestureRecognizers>
-                                                </Image>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
                                             </StackLayout>
-                                        </StackLayout>
-                                    </Frame>
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference List_Character}, Path=BindingContext.btnShowCharacter}"
+                                        </Frame>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference List_Character}, 
+                                                Path=BindingContext.btnShowCharacter}"
                                             CommandParameter="{Binding .}"/>
-                                    </Grid.GestureRecognizers>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout
                                 Span="2"
                                 Orientation="Vertical"/>
-                        </CollectionView.ItemsLayout>
-                    </CollectionView>
+                            </CollectionView.ItemsLayout>
+                        </CollectionView>
+
+                    <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="3">
+                            <Grid>
+                                <ImageButton
+                                    Source="ADD"
+                                    BackgroundColor="Transparent"
+                                    WidthRequest="50"
+                                    Command="{Binding btnAddCharacter}"/>
+                            </Grid>
+                     </StackLayout>
+
+                    <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="4">
+                        <Grid
+                                ColumnDefinitions="*,*"
+                                RowDefinitions="20">
+                            <ImageButton
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Source="left.png"
+                                    BackgroundColor="Transparent"/>
+                            <ImageButton
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Source="right.png"
+                                    BackgroundColor="Transparent"/>
+                        </Grid>
+                    </StackLayout>
+
                 </Grid>
             </Frame>
-            <Grid RowDefinitions="30" Margin="5">
-                <ImageButton
-                    Source="left"
-                    BackgroundColor="Transparent"
-                    Grid.Column="1"
-                    />
-                <ImageButton
-                    Source="right"
-                    BackgroundColor="Transparent"
-                    Grid.Column="2"
-                    />
-                <StackLayout
-                    Grid.Column="3">
-                    <ImageButton
-                        Source="ADD"
-                        BackgroundColor="Transparent"
-                        WidthRequest="50"
-                        Margin="0,-20,0,0"
-                        Command="{Binding btnAddCharacter}"
-                        />
-                </StackLayout>
-            </Grid>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using Naruto.Models;
 using Naruto.Views;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -128,10 +129,14 @@ namespace Naruto.ViewsModels
         }
         public async Task AddCaracter()
         {
+
+            Image myImage = new Image { Source = ImageSource.FromResource("Naruto.Images.naruto.png")};
+      
+
             var db = myDB.openConnection();
 
             var insertCharacter = "INSERT INTO Naruto (Name, Clan, Age, Jutsu, Image, Color1, Color2, Color3) " +
-                "VALUES ('" + TextName + "', '" + TextClan + "', '" + TextAge + "', '" + TextJutsu + "', '" + TextImage + "', '" + TextColor1 + "', '" + TextColor2 + "', '" + TextColor3 + "')";
+                "VALUES ('" + TextName + "', '" + TextClan + "', '" + TextAge + "', '" + TextImage + "', '" + myImage + "', '" + TextColor1 + "', '" + TextColor2 + "', '" + TextColor3 + "')";
 
             db.Execute(insertCharacter);
 
