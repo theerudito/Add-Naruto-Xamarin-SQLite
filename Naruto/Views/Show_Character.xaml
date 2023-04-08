@@ -112,7 +112,7 @@
                                 />
 
                             <ImageButton
-                                Source="delete_light"
+                                Source="delete_red.png"
                                 BackgroundColor="Transparent"
                                 Grid.Column="3"
                                 HeightRequest="40"

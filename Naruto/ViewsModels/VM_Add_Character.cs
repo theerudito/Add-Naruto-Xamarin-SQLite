@@ -1,7 +1,6 @@
 ﻿using Naruto.Context;
 using Naruto.Models;
 using Naruto.Views;
-using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -131,7 +130,7 @@ namespace Naruto.ViewsModels
         public async Task AddCaracter()
         {
 
-            Image myImage = new Image { Source = ImageSource.FromResource("Naruto.Images.naruto.png")};
+            ImageSource.FromFile("image.png");
 
             var addNewCharacter = new MNaruto
             {
