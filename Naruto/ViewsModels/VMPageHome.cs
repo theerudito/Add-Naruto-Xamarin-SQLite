@@ -31,10 +31,7 @@ namespace Naruto.ViewsModels
           
             GET_ALL_CHARACTERS();
 
-            if (SearchText != "")
-            {
-                GET_ALL_CHARACTERS();
-            } else
+            if (SearchText == "")
             {
                 GET_ALL_CHARACTERS();
             }
@@ -78,12 +75,13 @@ namespace Naruto.ViewsModels
 
         public async Task getOneCharacter()
         {
-            if (SearchText == null)
-            {
-              await  GET_ALL_CHARACTERS();
-            }
+            
+            //var searchingOneCharacter = await _dbCcontext.Naruto.Where(n => n.Name == SearchText).FirstOrDefaultAsync();
 
-            var searchingOneCharacter = await _dbCcontext.Naruto.Where(n => n.Name == SearchText).FirstOrDefaultAsync();
+            var searchingOneCharacter = await _dbCcontext.Naruto
+                                .Where(u => u.Name.StartsWith(SearchText))
+                                .ToListAsync();
+
 
             if (searchingOneCharacter == null)
             {
@@ -91,8 +89,7 @@ namespace Naruto.ViewsModels
                 
             } else
             {   
-                Lista_Characters.Clear();
-                Lista_Characters.Add(searchingOneCharacter);  
+                Lista_Characters = new ObservableCollection<MNaruto>(searchingOneCharacter);
             }
         }
 
