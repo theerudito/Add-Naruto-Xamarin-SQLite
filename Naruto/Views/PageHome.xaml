@@ -104,12 +104,7 @@
                                                     WidthRequest="40"
                                                     Source="eye_light"
                                                     BackgroundColor="Transparent">
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer
-                                                            Command="{Binding Source={x:Reference List_Character}, 
-                                                                Path=BindingContext.btnShowCharacter}"
-                                                            CommandParameter="{Binding .}"/>
-                                                        </Image.GestureRecognizers>
+
                                                     </Image>
                                                 </StackLayout>
                                             </StackLayout>
