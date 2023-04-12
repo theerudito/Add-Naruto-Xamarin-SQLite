@@ -6,6 +6,7 @@ using Xamarin.Forms;
 
 namespace Naruto.ViewsModels
 {
+    //
     public class BaseViewModel : INotifyPropertyChanged
     {
         public INavigation Navigation;
