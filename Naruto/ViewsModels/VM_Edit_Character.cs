@@ -1,9 +1,7 @@
 ﻿using Naruto.Context;
-using Microsoft.EntityFrameworkCore;
 using Naruto.Models;
 using Naruto.Views;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -14,19 +12,19 @@ namespace Naruto.ViewsModels
     class VM_Edit_Character : BaseViewModel
     {
         Application_Context _dbContext = new Application_Context();
-
+        public MNaruto _receivedCharacter { get; set; }
+        
         public VM_Edit_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
             _receivedCharacter = naruto;
+            
             getData();
         }
 
 
         #region VARIABLES
-        
-
-        public MNaruto _receivedCharacter { get; set; }
+       
         public string _Textname;
         public string _Textclan;
         public string _Textage;
@@ -35,6 +33,8 @@ namespace Naruto.ViewsModels
         public string _Textcolor1;
         public string _Textcolor2;
         public string _Textcolor3;
+        public ImageSource _imageSource;
+        public string _Base64Image;
         #endregion
 
 
@@ -80,7 +80,6 @@ namespace Naruto.ViewsModels
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
-
         public string Color1
         {
             get { return _Textcolor1; }
@@ -96,7 +95,6 @@ namespace Naruto.ViewsModels
 
             }
         }
-
         public string Color2
         {
             get { return _Textcolor2; }
@@ -112,7 +110,6 @@ namespace Naruto.ViewsModels
 
             }
         }
-
         public string Color3
         {
             get { return _Textcolor3; }
@@ -128,6 +125,16 @@ namespace Naruto.ViewsModels
 
             }
         }
+        public ImageSource ImageProfile
+        {
+            get { return _imageSource; }
+            set { SetValue(ref _imageSource, value); }
+        }
+        public string Base64Image
+        {
+            get { return _Base64Image; }
+            set { SetValue(ref _Base64Image, value); }
+        }
         #endregion
 
 
@@ -137,11 +144,43 @@ namespace Naruto.ViewsModels
             TextName = _receivedCharacter.Name;
             TextClan = _receivedCharacter.Clan;
             TextAge = Convert.ToString(_receivedCharacter.Age);
-            TextImage = _receivedCharacter.Image;
+            ImageProfile = ConvertImage.ToPNG(_receivedCharacter.Image);
             TextJutsu = _receivedCharacter.Jutsu;
             TextColor1 = _receivedCharacter.Color1;
             TextColor2 = _receivedCharacter.Color2;
             TextColor3 = _receivedCharacter.Color3;
+        }
+
+        public async Task OpenGaleryEdit()
+        {
+            var result = await FilePicker.PickAsync();
+
+            if ( result.ContentType == "image/png" || result.ContentType == "image/jpeg" || result.ContentType == "image/webp")
+            {
+                if (result != null)
+                {
+                    ImageProfile = result.FullPath;
+
+                    TextImage = result.FileName;
+
+                    var stream = await result.OpenReadAsync();
+
+                    var bytes = new byte[stream.Length];
+
+                    await stream.ReadAsync(bytes, 0, (int)stream.Length);
+
+                    string base64 = Convert.ToBase64String(bytes);
+
+                    Base64Image = base64;
+                }
+            }
+            else
+            {
+                await DisplayAlert("info", "The File doens't compatible only files allowed .jpg, .png or .webp ", "ok");
+
+
+                ImageProfile = ImageSource.FromFile("hoja_dark.png");
+            }
         }
 
         public async Task Edit_Caracter()
@@ -149,7 +188,7 @@ namespace Naruto.ViewsModels
             _receivedCharacter.Name = TextName;
             _receivedCharacter.Clan = TextClan;
             _receivedCharacter.Age = Convert.ToInt32(TextAge);
-            _receivedCharacter.Image = TextImage;
+            _receivedCharacter.Image = Base64Image == null ? _receivedCharacter.Image : Base64Image;
             _receivedCharacter.Jutsu = TextJutsu;
             _receivedCharacter.Color1 = TextColor1;
             _receivedCharacter.Color2 = TextColor2;
@@ -158,8 +197,11 @@ namespace Naruto.ViewsModels
            _dbContext.Update(_receivedCharacter);
            await _dbContext.SaveChangesAsync();
 
+           await DisplayAlert("Info", "Saved With Succesfully", "ok");
+
            await Navigation.PushAsync(new PageHome());
         }
+
         public async Task goBack()
         {
             await Navigation.PushAsync(new PageHome());
@@ -168,10 +210,11 @@ namespace Naruto.ViewsModels
 
 
         #region COMMANDS
+        
+        public ICommand btnLoadImageEditCommnad => new Command(async () => await OpenGaleryEdit());
         public ICommand btnEditCharacter => new Command(async () => await Edit_Caracter());
         public ICommand btnBackHome => new Command(async () => await goBack());
         
         #endregion
-
     }
 }

@@ -16,15 +16,19 @@ namespace Naruto.ViewsModels
         #region VARIABLE
         private string GitHub = "https://github.com/theerudito";
         private string Web = "https://byerudito.web.app/";
-        public MNaruto receivedCharacter { get; set; }
+        public  MNaruto  receivedCharacter { get; set; }
+
+        public ImageSource ImageProfile { get; set; }
         #endregion
-
-
         #region CONSTRUCTOR
         public VM_See_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
+           
             receivedCharacter = naruto;
+
+            ImageProfile = ConvertImage.ToPNG(naruto.Image);
+           
         }
         #endregion
 
@@ -40,11 +44,22 @@ namespace Naruto.ViewsModels
 
             if (deleteCharacter != null)
             {
-                _dbContext.Naruto.Remove(deleteCharacter);
-               await _dbContext.SaveChangesAsync();
-
+                if (await DisplayAlert("Info", "Are You Surely To Delete", "yes", "no"))
+                {
+                    _dbContext.Naruto.Remove(deleteCharacter);
+                    await _dbContext.SaveChangesAsync();
+                    await DisplayAlert("Info", "Deleted With Sussessfully", "ok");
+                    await Navigation.PushAsync(new PageHome());
+                } else
+                {
+                    return;
+                }
+   
+            } else
+            {
+                await DisplayAlert("Error", "Error to Delete", "ok");
             }
-            await Navigation.PushAsync(new PageHome());
+            
         }
         public async Task goUpdateProduct()
         {
@@ -55,6 +70,7 @@ namespace Naruto.ViewsModels
         {
             await Launcher.OpenAsync(Web);
         }
+
         public async Task openGitHub()
         {
             await Launcher.OpenAsync(GitHub);

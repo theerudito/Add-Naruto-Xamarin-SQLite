@@ -2,7 +2,11 @@
 using Naruto.Context;
 using Naruto.Models;
 using Naruto.Views;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,6 +18,8 @@ namespace Naruto.ViewsModels
     public class VMPageHome : BaseViewModel
     {
         Application_Context _dbCcontext = new Application_Context();
+
+        public Command LoadData { get; }
 
         #region VARIABLES
         string _searchText;
@@ -35,6 +41,8 @@ namespace Naruto.ViewsModels
             {
                 GET_ALL_CHARACTERS();
             }
+
+            LoadData = new Command(async () => await GET_ALL_CHARACTERS());
         }
         #endregion
 
@@ -60,14 +68,48 @@ namespace Naruto.ViewsModels
         }
         #endregion
 
-
+        
         #region METODOS ASYNC
         public async Task GET_ALL_CHARACTERS()
         {
-            var result = await _dbCcontext.Naruto.ToListAsync();
+            IsBusy = true;
+            try
+            {
+                var result = await _dbCcontext.Naruto.ToListAsync();
 
-            Lista_Characters = new ObservableCollection<MNaruto>(result);
+                List<MNaruto> list_character = new List<MNaruto>();
+
+                foreach (var item in result)
+                {
+                    var list = new MNaruto 
+                    { 
+                        Id = item.Id,
+                        Name = item.Name, 
+                        Age = item.Age, 
+                        Clan = item.Clan,
+                        Image = item.Image,
+                        ImageProfile = ConvertImage.ToPNG(item.Image),
+                        Jutsu = item.Jutsu,
+                        Color1 = item.Color1,
+                        Color2 = item.Color2,
+                        Color3 = item.Color3,
+                    };
+
+                    list_character.Add(list);
+                }
+
+                Lista_Characters = new ObservableCollection<MNaruto>(list_character);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
+
         public async Task goAddCharacter()
         {
             await Navigation.PushAsync(new Add_Character());
@@ -85,11 +127,32 @@ namespace Naruto.ViewsModels
 
             if (searchingOneCharacter == null)
             {
-                await DisplayAlert("info", "No se encontraron resultados", "OK");
+                await DisplayAlert("info", "Doen's  Result Trying Later", "OK");
                 
             } else
-            {   
-                Lista_Characters = new ObservableCollection<MNaruto>(searchingOneCharacter);
+            {
+                List<MNaruto> list_character = new List<MNaruto>();
+
+                foreach (var item in searchingOneCharacter)
+                {
+                    var list = new MNaruto
+                    {
+                        Id = item.Id,
+                        Name = item.Name,
+                        Age = item.Age,
+                        Clan = item.Clan,
+                        Image = item.Image,
+                        ImageProfile = ConvertImage.ToPNG(item.Image),
+                        Jutsu = item.Jutsu,
+                        Color1 = item.Color1,
+                        Color2 = item.Color2,
+                        Color3 = item.Color3,
+                    };
+
+                    list_character.Add(list);
+                }
+
+                Lista_Characters = new ObservableCollection<MNaruto>(list_character);
             }
         }
 

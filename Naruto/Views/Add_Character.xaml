@@ -56,7 +56,7 @@
                                 <StackLayout
                                     Grid.Column="2">
                                     <Image Margin="0,-20,0,0"
-                                           Source="{Binding TextImage}"
+                                           Source="{Binding Image}"
                                            WidthRequest="100"
                                            HeightRequest="90"/>
                                 </StackLayout>
@@ -204,8 +204,11 @@
                         </Frame>
                     </Grid>
                     <Grid
+                        ColumnDefinitions="65,*,80"
                         RowDefinitions="40, *" >
                         <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
                             Text="Image: "
                             FontSize="18"
                             TextColor="Black"
@@ -215,9 +218,9 @@
                             VerticalOptions="Center"
                             WidthRequest="80"/>
                         <Frame
-                            BackgroundColor="#d9d9d9"
+                            Grid.Row="0"
                             Grid.Column="1"
-                            Margin="-100,0,20,0"
+                            BackgroundColor="#d9d9d9"
                             CornerRadius="10"
                             Padding="-10">
                             <Entry
@@ -232,6 +235,13 @@
                                 Text="{Binding TextImage}"
                                 />
                         </Frame>
+                        <ImageButton 
+                            WidthRequest="20"
+                            BackgroundColor="Transparent"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Command="{Binding btnLoadImageCommnad}"
+                            Source="add.png"/>
                     </Grid>
                     <Grid
                         RowDefinitions="40, *" >

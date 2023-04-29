@@ -1,8 +1,10 @@
 ﻿using Naruto.Context;
 using Naruto.Models;
 using Naruto.Views;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Naruto.ViewsModels
@@ -20,6 +22,10 @@ namespace Naruto.ViewsModels
         public string _Textcolor1;
         public string _Textcolor2;
         public string _Textcolor3;
+
+        public ImageSource _image;
+        private string _byteImagen;
+        
 
         #endregion
 
@@ -119,6 +125,22 @@ namespace Naruto.ViewsModels
 
             }
         }
+        public ImageSource Image
+        {
+            get { return _image; }
+            set
+            {
+                SetValue(ref _image, value);
+            }
+        }
+        public string ByteImage
+        {
+            get { return _byteImagen; }
+            set
+            {
+                SetValue(ref _byteImagen, value);
+            }
+        }
         #endregion
 
 
@@ -127,17 +149,46 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new PageHome());
         }
+
+        public async Task OpenGalery()
+        {
+            var result = await FilePicker.PickAsync();
+
+            if (result.ContentType == "image/png" || result.ContentType == "image/jpeg" || result.ContentType == "image/webp")
+            {
+                if (result != null)
+                {
+                    Image = result.FullPath;
+                    TextImage = result.FileName;
+
+                    var stream = await result.OpenReadAsync();
+
+                    var bytes = new byte[stream.Length];
+
+                    await stream.ReadAsync(bytes, 0, (int)stream.Length);
+
+                    string base64 = Convert.ToBase64String(bytes);
+
+                    ByteImage = base64;
+                }
+            }
+            else
+            {
+                await DisplayAlert("info", "The File doens't compatible only files allowed .jpg, .png or .webp ", "ok");
+
+
+                Image = ImageSource.FromFile("hoja_dark.png");
+            }
+        }
         public async Task AddCaracter()
         {
-
-            ImageSource.FromFile("image.png");
 
             var addNewCharacter = new MNaruto
             {
                 Name = TextName,
                 Clan = TextClan,
                 Age = TextAge,
-                Image = TextImage,
+                Image = ByteImage,
                 Jutsu = TextJutsu,
                 Color1 = Color1,
                 Color2 = Color2,
@@ -146,7 +197,8 @@ namespace Naruto.ViewsModels
 
             _dbContext.Add(addNewCharacter);
             await _dbContext.SaveChangesAsync();
-      
+
+            await DisplayAlert("info", "Saved With Successfully", "ok");
 
             await Navigation.PushAsync(new PageHome());
 
@@ -163,6 +215,7 @@ namespace Naruto.ViewsModels
 
 
         #region
+        public ICommand btnLoadImageCommnad => new Command(async () => await OpenGalery());
         public ICommand btnBackHome => new Command(async () => await goBack());
         public ICommand btnGoUpDateCharacter => new Command(async () => await goAddCharacter());
         public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goShowCharacter(n));

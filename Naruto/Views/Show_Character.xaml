@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Naruto.Views.Show_Character">
     <ContentPage.Content>
-        <StackLayout
-            BackgroundColor="Transparent">
+        <StackLayout>
             <StackLayout.Background >
                 <LinearGradientBrush
                     StartPoint="1,0">
@@ -24,7 +23,7 @@
                 Command="{Binding btnBack}"
                 />
             <Image
-                Source="{Binding receivedCharacter.Image}"
+                Source="{Binding ImageProfile}"
                 WidthRequest="200"
                 HeightRequest="260"/>
             <StackLayout>

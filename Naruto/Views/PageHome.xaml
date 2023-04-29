@@ -46,9 +46,15 @@
                             </Frame>
                         </StackLayout>
 
-                    <CollectionView
-                            Grid.Column="0"
-                            Grid.Row="2"
+
+                    <StackLayout
+                         Grid.Column="0"
+                         Grid.Row="2">
+                        <RefreshView
+                            Command="{Binding LoadData}"
+                            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                            RefreshColor="OrangeRed">
+                         <CollectionView
                             x:Name="List_Character"
                             Margin="0,20,0,0"
                             HorizontalScrollBarVisibility="Always"
@@ -66,7 +72,7 @@
                                         CornerRadius="10">
                                             <StackLayout>
                                                 <Image
-                                                Source="{Binding Image}"
+                                                Source="{Binding ImageProfile}"
                                                 HeightRequest="100"/>
 
                                                 <FlexLayout>
@@ -124,6 +130,12 @@
                                 Orientation="Vertical"/>
                             </CollectionView.ItemsLayout>
                         </CollectionView>
+                    </RefreshView> 
+                    </StackLayout>
+
+                   
+
+                   
 
                     <StackLayout
                             Grid.Column="0"
