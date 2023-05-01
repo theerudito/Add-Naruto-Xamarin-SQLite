@@ -6,46 +6,54 @@ namespace Naruto.ViewsModels
 {
     public class Helpers : BaseViewModel
     {
-
-
         #region VARIABLES
-        string _Text;
-        #endregion
+
+        private string _Text;
+
+        #endregion VARIABLES
 
         #region CONSTRUCTOR
+
         public Helpers()
         {
-
         }
-        #endregion
+
+        #endregion CONSTRUCTOR
 
         #region OBJETOS
+
         public string Text
         {
             get { return _Text; }
             set { SetValue(ref _Text, value); }
         }
-        #endregion
+
+        #endregion OBJETOS
 
         #region METODOS ASYNC
+
         public async Task MetodoAsincrono()
         {
             await Task.Delay(1000);
             Text = "Hola Mundo";
         }
-        #endregion
+
+        #endregion METODOS ASYNC
 
         #region METODOS SIMPLE
+
         public void MetodoSimple()
         {
             Text = "Hola Mundo";
         }
-        #endregion
 
+        #endregion METODOS SIMPLE
 
         #region COMANDOS
+
         public ICommand AlertaAsincrona => new Command(async () => await MetodoAsincrono());
         public ICommand AlertaSimple => new Command(() => MetodoSimple());
-        #endregion
+
+        #endregion COMANDOS
     }
 }

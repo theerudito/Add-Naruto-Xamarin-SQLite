@@ -7,7 +7,6 @@ namespace Naruto.DataBase
     {
         //public SQLite.SQLiteConnection myconnection;
 
-
         public DB()
         {
             //myconnection = new SQLite.SQLiteConnection(GetLocalFilePath("naturo.db3"));

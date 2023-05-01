@@ -8,7 +8,6 @@ namespace Naruto
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
@@ -17,7 +16,6 @@ namespace Naruto
             int id = 1;
 
             _dbCcontext.Database.Migrate();
-
 
             var newCharacter = new MNaruto
             {

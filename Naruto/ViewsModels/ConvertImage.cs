@@ -1,10 +1,10 @@
-﻿using System.IO;
-using System;
+﻿using System;
+using System.IO;
 using Xamarin.Forms;
 
 namespace Naruto.ViewsModels
 {
-    static class ConvertImage
+    internal static class ConvertImage
     {
         public static ImageSource ToPNG(string base64String)
         {

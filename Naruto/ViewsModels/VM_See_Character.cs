@@ -11,33 +11,38 @@ namespace Naruto.ViewsModels
 {
     public class VM_See_Character : BaseViewModel
     {
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
 
         #region VARIABLE
+
         private string GitHub = "https://github.com/theerudito";
         private string Web = "https://byerudito.web.app/";
-        public  MNaruto  receivedCharacter { get; set; }
+        public MNaruto receivedCharacter { get; set; }
 
         public ImageSource ImageProfile { get; set; }
-        #endregion
+
+        #endregion VARIABLE
+
         #region CONSTRUCTOR
+
         public VM_See_Character(INavigation navigation, MNaruto naruto)
         {
             Navigation = navigation;
-           
+
             receivedCharacter = naruto;
 
             ImageProfile = ConvertImage.ToPNG(naruto.Image);
-           
         }
-        #endregion
 
+        #endregion CONSTRUCTOR
 
         #region METHODS
+
         public async Task goBack()
         {
             await Navigation.PushAsync(new PageHome());
         }
+
         public async Task DeleteCharacter()
         {
             var deleteCharacter = await _dbContext.Naruto.FirstOrDefaultAsync(cha => cha.Id == receivedCharacter.Id);
@@ -50,17 +55,18 @@ namespace Naruto.ViewsModels
                     await _dbContext.SaveChangesAsync();
                     await DisplayAlert("Info", "Deleted With Sussessfully", "ok");
                     await Navigation.PushAsync(new PageHome());
-                } else
+                }
+                else
                 {
                     return;
                 }
-   
-            } else
+            }
+            else
             {
                 await DisplayAlert("Error", "Error to Delete", "ok");
             }
-            
         }
+
         public async Task goUpdateProduct()
         {
             await Navigation.PushAsync(new Edit_Character(receivedCharacter));
@@ -75,15 +81,17 @@ namespace Naruto.ViewsModels
         {
             await Launcher.OpenAsync(GitHub);
         }
-        #endregion
 
+        #endregion METHODS
 
         #region COMMANDS
+
         public ICommand btnBack => new Command(async () => await goBack());
         public ICommand btnGoUpDateCharacter => new Command(async () => await goUpdateProduct());
         public ICommand btnGoDeleteCharacter => new Command(async () => await DeleteCharacter());
         public ICommand btnOpenWeb => new Command(async () => await openWeb());
         public ICommand btnOpenGithub => new Command(async () => await openGitHub());
-        #endregion
+
+        #endregion COMMANDS
     }
 }

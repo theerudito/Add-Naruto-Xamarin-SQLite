@@ -12,11 +12,14 @@ namespace Naruto.ViewsModels
         public INavigation Navigation;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnpropertyChanged([CallerMemberName] string nombre = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
         }
+
         private ImageSource foto;
+
         public ImageSource Foto
         {
             get { return foto; }
@@ -56,6 +59,7 @@ namespace Naruto.ViewsModels
         }
 
         private string _title;
+
         public string Title
         {
             get { return _title; }
@@ -66,6 +70,7 @@ namespace Naruto.ViewsModels
         }
 
         private bool _isBusy;
+
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -74,14 +79,13 @@ namespace Naruto.ViewsModels
                 SetProperty(ref _isBusy, value);
             }
         }
+
         protected void SetValue<T>(ref T backingFieled, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingFieled, value))
 
             {
-
                 return;
-
             }
 
             backingFieled = value;

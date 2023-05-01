@@ -12,16 +12,16 @@
                     BackgroundColor="Transparent"
                     WidthRequest="50"
                     HorizontalOptions="Start"
-                    Margin="10"/>
+                    Margin="10" />
             </StackLayout>
-            <Frame Margin="5" CornerRadius="10" >
+            <Frame Margin="5" CornerRadius="10">
                 <StackLayout>
                     <Frame
                         HeightRequest="130"
                         BackgroundColor="{Binding TextColor1}"
                         Margin="0,0,0,8"
                         CornerRadius="20">
-                        <StackLayout >
+                        <StackLayout>
                             <Grid
                                 Margin="0,0,0,0"
                                 Padding="0"
@@ -37,8 +37,8 @@
                                     <Label
                                         Text="{Binding TextName}"
                                         Grid.Column="0"
-                                        TextColor="black"/>
-                                </StackLayout >
+                                        TextColor="black" />
+                                </StackLayout>
                                 <StackLayout
                                     Grid.Column="1">
                                     <Label
@@ -49,14 +49,14 @@
                                     <Label
                                         Text="{Binding TextClan}"
                                         Grid.Column="1"
-                                        TextColor="black"/>
+                                        TextColor="black" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column="2">
                                     <Image Margin="0,-20,0,0"
                                            Source="{Binding ImageProfile}"
                                            WidthRequest="90"
-                                           HeightRequest="80"/>
+                                           HeightRequest="80" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column="0"
@@ -65,10 +65,10 @@
                                     <Label
                                         Text="Age: "
                                         FontAttributes="Bold"
-                                        TextColor="White"/>
+                                        TextColor="White" />
                                     <Label
                                         Text="{Binding TextAge}"
-                                        TextColor="black"/>
+                                        TextColor="black" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column="2"
@@ -77,10 +77,10 @@
                                     <Label
                                         Text="Jutsu: "
                                         FontAttributes="Bold"
-                                        TextColor="White"/>
+                                        TextColor="White" />
                                     <Label
                                         Text="{Binding TextJutsu}"
-                                        TextColor="black"/>
+                                        TextColor="black" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column="1"
@@ -90,7 +90,7 @@
                                         Text="Outfit: "
                                         Grid.Column="3"
                                         FontAttributes="Bold"
-                                        TextColor="White"/>
+                                        TextColor="White" />
                                     <StackLayout
                                         Orientation="Horizontal"
                                         Grid.Column="3"
@@ -100,20 +100,20 @@
                                             WidthRequest="20"
                                             BackgroundColor="{Binding TextColor2}"
                                             CornerRadius="15"
-                                            VerticalOptions="Center"/>
+                                            VerticalOptions="Center" />
                                         <BoxView
                                             HeightRequest="20"
                                             WidthRequest="20"
                                             BackgroundColor="{Binding TextColor3}"
                                             CornerRadius="15"
-                                            VerticalOptions="Center"/>
+                                            VerticalOptions="Center" />
                                     </StackLayout>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
                     </Frame>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Name: "
                             FontSize="18"
@@ -122,7 +122,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -137,12 +137,11 @@
                                 Keyboard="Text"   Margin="20,1,0,-4"
                                 HeightRequest="80"
                                 VerticalOptions="Center"
-                                Text="{Binding TextName}"
-                                />
+                                Text="{Binding TextName}" />
                         </Frame>
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Clan: "
                             FontSize="18"
@@ -151,7 +150,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -167,12 +166,11 @@
                                 Margin="20,1,0,-4"
                                 HeightRequest="80"
                                 VerticalOptions="Center"
-                                Text="{Binding TextClan}"
-                                />
+                                Text="{Binding TextClan}" />
                         </Frame>
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Age: "
                             FontSize="18"
@@ -181,7 +179,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -197,13 +195,12 @@
                                 Margin="20,1,0,-4"
                                 HeightRequest="80"
                                 VerticalOptions="Center"
-                                Text="{Binding TextAge}"
-                                />
+                                Text="{Binding TextAge}" />
                         </Frame>
                     </Grid>
                     <Grid
                         ColumnDefinitions="65,*,80"
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Grid.Row="0"
                             Grid.Column="0"
@@ -214,7 +211,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             Grid.Row="0"
                             Grid.Column="1"
@@ -230,19 +227,18 @@
                                 Margin="20,1,0,-4"
                                 HeightRequest="80"
                                 VerticalOptions="Center"
-                                Text="{Binding TextImage}"
-                                />
+                                Text="{Binding TextImage}" />
                         </Frame>
-                        <ImageButton 
+                        <ImageButton
                             WidthRequest="20"
                             BackgroundColor="Transparent"
                             Grid.Row="0"
                             Grid.Column="2"
                             Command="{Binding btnLoadImageEditCommnad}"
-                            Source="add.png"/>
+                            Source="add.png" />
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Jutsu: "
                             FontSize="18"
@@ -251,7 +247,7 @@
                             Margin="00,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -267,12 +263,11 @@
                                 Margin="20,1,0,-4"
                                 HeightRequest="80"
                                 VerticalOptions="Center"
-                                Text="{Binding TextJutsu}"
-                                />
+                                Text="{Binding TextJutsu}" />
                         </Frame>
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Color 1: "
                             FontSize="18"
@@ -281,7 +276,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -323,7 +318,7 @@
                         </Frame>
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Color 2: "
                             FontSize="18"
@@ -332,7 +327,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -363,7 +358,7 @@
                         </Frame>
                     </Grid>
                     <Grid
-                        RowDefinitions="40, *" >
+                        RowDefinitions="40, *">
                         <Label
                             Text="Color 3: "
                             FontSize="18"
@@ -372,7 +367,7 @@
                             Margin="0,0,0,0"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="80" />
                         <Frame
                             BackgroundColor="#d9d9d9"
                             Grid.Column="1"
@@ -411,8 +406,7 @@
                             Background="orangered"
                             Margin="30,0,20,0"
                             CornerRadius="50"
-                            Command="{Binding btnEditCharacter}"
-                            />
+                            Command="{Binding btnEditCharacter}" />
                     </StackLayout>
                 </StackLayout>
             </Frame>

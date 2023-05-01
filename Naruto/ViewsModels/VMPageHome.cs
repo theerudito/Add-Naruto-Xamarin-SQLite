@@ -6,35 +6,35 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-
 namespace Naruto.ViewsModels
 {
     public class VMPageHome : BaseViewModel
     {
-        Application_Context _dbCcontext = new Application_Context();
+        private Application_Context _dbCcontext = new Application_Context();
 
         public Command LoadData { get; }
 
         #region VARIABLES
-        string _searchText;
 
-        SearchBar SearchTex = new SearchBar();
+        private string _searchText;
 
-        ObservableCollection<MNaruto> _Lista_character;
-        #endregion
+        private SearchBar SearchTex = new SearchBar();
 
+        private ObservableCollection<MNaruto> _Lista_character;
+
+        #endregion VARIABLES
 
         #region CONSTRUCTOR
+
         public VMPageHome(INavigation navigation)
         {
             Navigation = navigation;
-          
+
             GET_ALL_CHARACTERS();
 
             if (SearchText == "")
@@ -44,10 +44,11 @@ namespace Naruto.ViewsModels
 
             LoadData = new Command(async () => await GET_ALL_CHARACTERS());
         }
-        #endregion
 
+        #endregion CONSTRUCTOR
 
         #region OBJETOS
+
         public string SearchText
         {
             get { return _searchText; }
@@ -57,6 +58,7 @@ namespace Naruto.ViewsModels
                 OnPropertyChanged();
             }
         }
+
         public ObservableCollection<MNaruto> Lista_Characters
         {
             get { return _Lista_character; }
@@ -66,10 +68,11 @@ namespace Naruto.ViewsModels
                 OnpropertyChanged();
             }
         }
-        #endregion
 
-        
+        #endregion OBJETOS
+
         #region METODOS ASYNC
+
         public async Task GET_ALL_CHARACTERS()
         {
             IsBusy = true;
@@ -81,11 +84,11 @@ namespace Naruto.ViewsModels
 
                 foreach (var item in result)
                 {
-                    var list = new MNaruto 
-                    { 
+                    var list = new MNaruto
+                    {
                         Id = item.Id,
-                        Name = item.Name, 
-                        Age = item.Age, 
+                        Name = item.Name,
+                        Age = item.Age,
                         Clan = item.Clan,
                         Image = item.Image,
                         ImageProfile = ConvertImage.ToPNG(item.Image),
@@ -117,19 +120,17 @@ namespace Naruto.ViewsModels
 
         public async Task getOneCharacter()
         {
-            
             //var searchingOneCharacter = await _dbCcontext.Naruto.Where(n => n.Name == SearchText).FirstOrDefaultAsync();
 
             var searchingOneCharacter = await _dbCcontext.Naruto
                                 .Where(u => u.Name.StartsWith(SearchText))
                                 .ToListAsync();
 
-
             if (searchingOneCharacter == null)
             {
                 await DisplayAlert("info", "Doen's  Result Trying Later", "OK");
-                
-            } else
+            }
+            else
             {
                 List<MNaruto> list_character = new List<MNaruto>();
 
@@ -160,13 +161,15 @@ namespace Naruto.ViewsModels
         {
             await Navigation.PushAsync(new Show_Character(naruto));
         }
-        #endregion
 
+        #endregion METODOS ASYNC
 
         #region COMANDOS
+
         public ICommand btnAddCharacter => new Command(async () => await goAddCharacter());
         public ICommand btnShowCharacter => new Command<MNaruto>(async (n) => await goShowCharacter(n));
         public ICommand SearchCharacter => new Command(async () => await getOneCharacter());
-        #endregion
+
+        #endregion COMANDOS
     }
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Naruto.Views.PageHome">
-    <ContentPage.Content >
+    <ContentPage.Content>
         <StackLayout
             BackgroundColor="AliceBlue">
 
@@ -22,30 +22,27 @@
                             Source="hoja_dark"
                             Grid.Column="0"
                             HeightRequest="80"
-                            Margin="-5"
-                            />
+                            Margin="-5" />
                     </StackLayout>
 
                     <StackLayout
                             Grid.Column="0"
                             Grid.Row="1">
-                            <Frame
+                        <Frame
                             Margin="0,15,0,0"
                             BackgroundColor="AliceBlue"
                             Padding="0,0,10,-5"
                             CornerRadius="5">
-                                <SearchBar
+                            <SearchBar
                                 Keyboard="Text"
                                 Placeholder="Search Character"
                                 MaxLength="50"
                                 Text="{Binding SearchText}"
                                 SearchCommand="{Binding SearchCharacter}"
                                 SearchCommandParameter="{Binding .}"
-                                CancelButtonColor="Red"
-                                />
-                            </Frame>
-                        </StackLayout>
-
+                                CancelButtonColor="Red" />
+                        </Frame>
+                    </StackLayout>
 
                     <StackLayout
                          Grid.Column="0"
@@ -54,100 +51,95 @@
                             Command="{Binding LoadData}"
                             IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                             RefreshColor="OrangeRed">
-                         <CollectionView
+                            <CollectionView
                             x:Name="List_Character"
                             Margin="0,20,0,0"
                             HorizontalScrollBarVisibility="Always"
                             ItemsSource="{Binding Lista_Characters}"
-                            SelectionMode="Single" >
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate >
-                                    <Grid
+                            SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid
                                     RowDefinitions="*"
                                     ColumnDefinitions="*">
-                                        <Frame
+                                            <Frame
                                         Padding="20"
                                         BackgroundColor="{Binding Color1}"
                                         Margin="5"
                                         CornerRadius="10">
-                                            <StackLayout>
-                                                <Image
+                                                <StackLayout>
+                                                    <Image
                                                 Source="{Binding ImageProfile}"
-                                                HeightRequest="100"/>
+                                                HeightRequest="100" />
 
-                                                <FlexLayout>
-                                                    <Label
+                                                    <FlexLayout>
+                                                        <Label
                                                     Text="Name: "
-                                                    TextColor="white"/>
-                                                    <Label
+                                                    TextColor="white" />
+                                                        <Label
                                                     Text="{Binding Name}"
                                                     Margin="0, 0, 5 ,0"
-                                                    TextColor="white"/>
-                                                </FlexLayout>
-                                                <FlexLayout>
-                                                    <Label
+                                                    TextColor="white" />
+                                                    </FlexLayout>
+                                                    <FlexLayout>
+                                                        <Label
                                                     Text="Clan: "
-                                                    TextColor="white"/>
-                                                    <Label
+                                                    TextColor="white" />
+                                                        <Label
                                                     Text="{Binding Clan}"
                                                     Margin="0, 0, 5 ,0"
-                                                    TextColor="white"/>
-                                                </FlexLayout>
-                                                <FlexLayout>
-                                                    <Label
+                                                    TextColor="white" />
+                                                    </FlexLayout>
+                                                    <FlexLayout>
+                                                        <Label
                                                     Text="Age: "
-                                                    TextColor="white"/>
-                                                    <Label
+                                                    TextColor="white" />
+                                                        <Label
                                                     Text="{Binding Age}"
                                                     Margin="0, 0, 5 ,0"
-                                                    TextColor="white"/>
-                                                </FlexLayout>
-                                                <StackLayout
+                                                    TextColor="white" />
+                                                    </FlexLayout>
+                                                    <StackLayout
                                                 Grid.Column="0"
-                                                HeightRequest="10" >
-                                                    <Image
+                                                HeightRequest="10">
+                                                        <Image
                                                     HorizontalOptions="Center"
                                                     WidthRequest="40"
                                                     Source="eye_light"
                                                     BackgroundColor="Transparent">
-
-                                                    </Image>
+                                                        </Image>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </Frame>
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference List_Character}, 
+                                            </Frame>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference List_Character},
                                                 Path=BindingContext.btnShowCharacter}"
-                                            CommandParameter="{Binding .}"/>
-                                        </Grid.GestureRecognizers>
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout
+                                            CommandParameter="{Binding .}" />
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout
                                 Span="2"
-                                Orientation="Vertical"/>
-                            </CollectionView.ItemsLayout>
-                        </CollectionView>
-                    </RefreshView> 
+                                Orientation="Vertical" />
+                                </CollectionView.ItemsLayout>
+                            </CollectionView>
+                        </RefreshView>
                     </StackLayout>
-
-                   
-
-                   
 
                     <StackLayout
                             Grid.Column="0"
                             Grid.Row="3">
-                            <Grid>
-                                <ImageButton
+                        <Grid>
+                            <ImageButton
                                     Source="ADD"
                                     BackgroundColor="Transparent"
                                     WidthRequest="50"
-                                    Command="{Binding btnAddCharacter}"/>
-                            </Grid>
-                     </StackLayout>
+                                    Command="{Binding btnAddCharacter}" />
+                        </Grid>
+                    </StackLayout>
 
                     <StackLayout
                             Grid.Column="0"
@@ -159,18 +151,16 @@
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     Source="left.png"
-                                    BackgroundColor="Transparent"/>
+                                    BackgroundColor="Transparent" />
                             <ImageButton
                                     Grid.Column="1"
                                     Grid.Row="0"
                                     Source="right.png"
-                                    BackgroundColor="Transparent"/>
+                                    BackgroundColor="Transparent" />
                         </Grid>
                     </StackLayout>
-
                 </Grid>
             </Frame>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

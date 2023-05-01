@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Naruto.Models;
 using System;
 using System.IO;
@@ -28,9 +27,11 @@ namespace Naruto.Context
                 case Device.iOS:
                     databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library", DatabaseName);
                     break;
+
                 case Device.Android:
                     databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), DatabaseName);
                     break;
+
                 default:
                     throw new NotImplementedException("Platform not supported");
             }

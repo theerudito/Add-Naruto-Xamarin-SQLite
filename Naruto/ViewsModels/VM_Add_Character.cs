@@ -11,7 +11,6 @@ namespace Naruto.ViewsModels
 {
     public class VM_Add_Character : BaseViewModel
     {
-
         #region VARIABLES
         public MNaruto receivedCharacter { get; set; }
         public string _Textname;
@@ -25,66 +24,76 @@ namespace Naruto.ViewsModels
 
         public ImageSource _image;
         private string _byteImagen;
-        
 
-        #endregion
+        #endregion VARIABLES
 
-        Application_Context _dbContext = new Application_Context();
+        private Application_Context _dbContext = new Application_Context();
 
         #region CONSTRUCTOR
+
         public VM_Add_Character(INavigation navigation)
         {
             Navigation = navigation;
         }
-        #endregion
 
+        #endregion CONSTRUCTOR
 
         #region OBJETS
+
         public string TextName
         {
             get { return _Textname; }
             set { SetValue(ref _Textname, value); }
         }
+
         public string TextClan
         {
             get { return _Textclan; }
             set { SetValue(ref _Textclan, value); }
         }
+
         public int TextAge
         {
             get { return _Textage; }
             set { SetValue(ref _Textage, value); }
         }
+
         public string TextImage
         {
             get { return _Textimage; }
             set { SetValue(ref _Textimage, value); }
         }
+
         public string TextJutsu
         {
             get { return _Textjutsu; }
             set { SetValue(ref _Textjutsu, value); }
         }
+
         public string TextColor1
         {
             get { return _Textcolor1; }
             set { SetValue(ref _Textcolor1, value); }
         }
+
         public string TextColor2
         {
             get { return _Textcolor2; }
             set { SetValue(ref _Textcolor2, value); }
         }
+
         public string TextColor3
         {
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
+
         public string Color1
         {
             get { return _Textcolor1; }
             set { SetValue(ref _Textcolor1, value); }
         }
+
         public string SelectColor1
         {
             get { return _Textcolor1; }
@@ -92,14 +101,15 @@ namespace Naruto.ViewsModels
             {
                 SetProperty(ref _Textcolor1, value);
                 Color1 = _Textcolor1;
-
             }
         }
+
         public string Color2
         {
             get { return _Textcolor2; }
             set { SetValue(ref _Textcolor2, value); }
         }
+
         public string SelectColor2
         {
             get { return _Textcolor2; }
@@ -107,14 +117,15 @@ namespace Naruto.ViewsModels
             {
                 SetProperty(ref _Textcolor2, value);
                 Color2 = _Textcolor2;
-
             }
         }
+
         public string Color3
         {
             get { return _Textcolor3; }
             set { SetValue(ref _Textcolor3, value); }
         }
+
         public string SelectColor3
         {
             get { return _Textcolor3; }
@@ -122,9 +133,9 @@ namespace Naruto.ViewsModels
             {
                 SetProperty(ref _Textcolor3, value);
                 Color3 = _Textcolor3;
-
             }
         }
+
         public ImageSource Image
         {
             get { return _image; }
@@ -133,6 +144,7 @@ namespace Naruto.ViewsModels
                 SetValue(ref _image, value);
             }
         }
+
         public string ByteImage
         {
             get { return _byteImagen; }
@@ -141,10 +153,11 @@ namespace Naruto.ViewsModels
                 SetValue(ref _byteImagen, value);
             }
         }
-        #endregion
 
+        #endregion OBJETS
 
         #region METHODS
+
         public async Task goBack()
         {
             await Navigation.PushAsync(new PageHome());
@@ -176,13 +189,12 @@ namespace Naruto.ViewsModels
             {
                 await DisplayAlert("info", "The File doens't compatible only files allowed .jpg, .png or .webp ", "ok");
 
-
                 Image = ImageSource.FromFile("hoja_dark.png");
             }
         }
+
         public async Task AddCaracter()
         {
-
             var addNewCharacter = new MNaruto
             {
                 Name = TextName,
@@ -201,18 +213,19 @@ namespace Naruto.ViewsModels
             await DisplayAlert("info", "Saved With Successfully", "ok");
 
             await Navigation.PushAsync(new PageHome());
-
         }
+
         public async Task goAddCharacter()
         {
             await Navigation.PushAsync(new Add_Character());
         }
+
         public async Task goShowCharacter(MNaruto naruto)
         {
             await Navigation.PushAsync(new Show_Character(naruto));
         }
-        #endregion COMMANDS
 
+        #endregion METHODS
 
         #region
         public ICommand btnLoadImageCommnad => new Command(async () => await OpenGalery());
