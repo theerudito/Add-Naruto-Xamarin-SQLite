@@ -126,11 +126,7 @@ namespace Naruto.ViewsModels
                                 .Where(u => u.Name.StartsWith(SearchText))
                                 .ToListAsync();
 
-            if (searchingOneCharacter == null)
-            {
-                await DisplayAlert("info", "Doen's  Result Trying Later", "OK");
-            }
-            else
+            if (searchingOneCharacter.Count > 0)
             {
                 List<MNaruto> list_character = new List<MNaruto>();
 
@@ -154,6 +150,10 @@ namespace Naruto.ViewsModels
                 }
 
                 Lista_Characters = new ObservableCollection<MNaruto>(list_character);
+            }
+            else
+            {
+                await DisplayAlert("info", "Doen's  Result Trying Later", "OK");
             }
         }
 
